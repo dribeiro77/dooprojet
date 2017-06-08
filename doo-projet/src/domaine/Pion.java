@@ -1,17 +1,19 @@
 package domaine;
 
+import java.awt.Color;
+
 public class Pion {
-	private String couleur;
+	private Color couleur;
 	
-	public Pion(String c){
-		setCouleur(c);
+	public Pion(Color c){
+		couleur=c;
 	}
 
-	public String getCouleur() {
+	public Color getCouleur() {
 		return couleur;
 	}
 
-	public void setCouleur(String couleur) {
+	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}
 	

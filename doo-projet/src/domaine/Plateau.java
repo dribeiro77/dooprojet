@@ -47,7 +47,12 @@ public abstract class Plateau {
 	    }
 	}
 	
-	ArrayList<Case> deplacements_simples(Case n){
+	/**
+	 * Retourne les cases voisines où le pion peut se déplacer à partir de sa case
+	 * @param n
+	 * @return
+	 */
+	public ArrayList<Case> deplacements_simples(Case n){
 		
 		ArrayList<Case> res = new ArrayList();
 
@@ -97,5 +102,27 @@ public abstract class Plateau {
 	    return res;
 	}
 	
+	public boolean estVoisin(Case c1, Case v2){
+		if(c1.getDroite()==v2){
+			return true;
+		}
+		if(c1.getGauche()==v2){
+			return true;
+		}
+		if(c1.getBas_droite()==v2){
+			return true;
+		}
+		if(c1.getBas_gauche()==v2){
+			return true;
+		}
+		if(c1.getHaut_droite()==v2){
+			return true;
+		}
+		if(c1.getHaut_gauche()==v2){
+			return true;
+		}
+		
+		return false;
+	}
 
 }

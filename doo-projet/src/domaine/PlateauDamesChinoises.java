@@ -1,5 +1,6 @@
 package domaine;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 public class PlateauDamesChinoises extends Plateau{
@@ -249,6 +250,12 @@ public class PlateauDamesChinoises extends Plateau{
 				
 	}
 	
+	/**
+	 * Verifie si la Case est ou pas au bord droit du graph
+	 * @param pos
+	 * @param etage
+	 * @return
+	 */
 	int est_bordure_d(int pos, int etage){
 	    switch(etage){
 	        case 0:
@@ -291,6 +298,12 @@ public class PlateauDamesChinoises extends Plateau{
 	    return 0;
 	}
 	
+	/**
+	 * Verifie si la Case est ou pas au bord gauche du graphe
+	 * @param pos
+	 * @param etage
+	 * @return
+	 */
 	int est_bordure_g(int pos, int etage){
 	    switch(etage){
 	        case 0:
@@ -333,47 +346,52 @@ public class PlateauDamesChinoises extends Plateau{
 	    return 0;
 	}
 	
+	/**
+	 * Donne la liste de Cases où le pion peut sauter à partir de sa case
+	 * @param n
+	 * @return
+	 */
 	public ArrayList<Case> sauts_disponibles(Case n){
 	    
 		ArrayList<Case> res = new ArrayList();
 
 	    //saut à droite
-	    if (n.getDroite() != null){
+	    if (n.getDroite() != null && n.getDroite().getPion()!=null){
 	        if (n.getDroite().getDroite() != null && n.getDroite().getDroite().getPion() == null){
 	            res.add(n.getDroite().getDroite());
 	        }
 	    }
 
 	    //saut à gauche
-	    if (n.getGauche() != null){
+	    if (n.getGauche() != null  && n.getGauche().getPion()!=null){
 	        if (n.getGauche().getGauche() != null && n.getGauche().getGauche().getPion() == null){
 	            res.add(n.getGauche().getGauche());
 	        }
 	    }
 
 	    //saut haut droite
-	    if (n.getHaut_droite() != null){
+	    if (n.getHaut_droite() != null  && n.getHaut_droite().getPion()!=null){
 	        if (n.getHaut_droite().getHaut_droite() != null && n.getHaut_droite().getHaut_droite().getPion() == null){
 	            res.add(n.getHaut_droite().getHaut_droite());
 	        }
 	    }
 
 	    //saut haut gauche
-	    if (n.getHaut_gauche() != null){
+	    if (n.getHaut_gauche() != null  && n.getHaut_gauche().getPion()!=null){
 	        if (n.getHaut_gauche().getHaut_gauche() != null && n.getHaut_gauche().getHaut_gauche().getPion() == null){
 	            res.add(n.getHaut_gauche().getHaut_gauche());
 	        }
 	    }
 
 	    //saut bas droite
-	    if (n.getBas_droite() != null){
+	    if (n.getBas_droite() != null  && n.getBas_droite().getPion()!=null){
 	        if (n.getBas_droite().getBas_droite() != null && n.getBas_droite().getBas_droite().getPion() == null){
 	            res.add(n.getBas_droite().getBas_droite());
 	        }
 	    }
 
 	    //saut bas gauche
-	    if (n.getBas_gauche() != null){
+	    if (n.getBas_gauche() != null  && n.getBas_gauche().getPion()!=null){
 	        if (n.getBas_gauche().getBas_gauche() != null && n.getBas_gauche().getBas_gauche().getPion() == null){
 	            res.add(n.getBas_gauche().getBas_gauche());
 	        }
@@ -383,61 +401,276 @@ public class PlateauDamesChinoises extends Plateau{
 
 	}
 	
+	/**
+	 * Ajoute des pions au triangle du haut
+	 */
 	public void init_triangleHaut(){
 		    
 		for(int i=1; i<=10 ; i++){
-			this.getPlateau()[i].setPion(new Pion("ROUGE"));
+			this.getPlateau()[i].setPion(new Pion(Color.RED));
 		}	
 	}
 	
+	/**
+	 * Ajoute des pions au triangle du bas
+	 */
 	public void init_triangleBas(){
 	    
 	    for(int i=112; i<=121 ; i++){
-	    	this.getPlateau()[i].setPion(new Pion("BLEU"));
+	    	this.getPlateau()[i].setPion(new Pion(Color.BLUE));
 	    }
 	}
-
+	
+	/**
+	 * Ajoute des pions au triangle droit en haut
+	 */
 	public void init_DoiteHaut(){
-		this.getPlateau()[56].setPion(new Pion("JAUNE"));
-		this.getPlateau()[45].setPion(new Pion("JAUNE"));this.getPlateau()[46].setPion(new Pion("JAUNE"));
-		this.getPlateau()[33].setPion(new Pion("JAUNE"));this.getPlateau()[34].setPion(new Pion("JAUNE"));
-		this.getPlateau()[35].setPion(new Pion("JAUNE"));
+		this.getPlateau()[56].setPion(new Pion(Color.YELLOW));
+		this.getPlateau()[45].setPion(new Pion(Color.YELLOW));this.getPlateau()[46].setPion(new Pion(Color.YELLOW));
+		this.getPlateau()[33].setPion(new Pion(Color.YELLOW));this.getPlateau()[34].setPion(new Pion(Color.YELLOW));
+		this.getPlateau()[35].setPion(new Pion(Color.YELLOW));
 	    for(int i=20; i<=23; i++){
-	    	this.getPlateau()[i].setPion(new Pion("JAUNE"));
+	    	this.getPlateau()[i].setPion(new Pion(Color.YELLOW));
 	    }
 	}
 	
+	/**
+	 * Ajoute des pions au triangle droit en bas
+	 */
 	public void init_DroiteBas(){
-		this.getPlateau()[75].setPion(new Pion("NOIR"));
-		this.getPlateau()[85].setPion(new Pion("NOIR"));this.getPlateau()[86].setPion(new Pion("NOIR"));
-		this.getPlateau()[96].setPion(new Pion("NOIR"));this.getPlateau()[97].setPion(new Pion("NOIR"));
-		this.getPlateau()[98].setPion(new Pion("NOIR"));
+		this.getPlateau()[75].setPion(new Pion(Color.BLACK));
+		this.getPlateau()[85].setPion(new Pion(Color.BLACK));this.getPlateau()[86].setPion(new Pion(Color.BLACK));
+		this.getPlateau()[96].setPion(new Pion(Color.BLACK));this.getPlateau()[97].setPion(new Pion(Color.BLACK));
+		this.getPlateau()[98].setPion(new Pion(Color.BLACK));
 	    for(int i=108; i<=111; i++){
-	    	this.getPlateau()[i].setPion(new Pion("NOIR"));
+	    	this.getPlateau()[i].setPion(new Pion(Color.BLACK));
 	    }
 
 	}
 	
+	/**
+	 * Ajoute des pions au triangle gauche en haut
+	 */
 	public void init_GaucheHaut(){
 	    
-		this.getPlateau()[47].setPion(new Pion("VERT"));
-		this.getPlateau()[36].setPion(new Pion("VERT"));this.getPlateau()[37].setPion(new Pion("VERT"));
-		this.getPlateau()[24].setPion(new Pion("VERT"));this.getPlateau()[25].setPion(new Pion("VERT"));
-		this.getPlateau()[26].setPion(new Pion("VERT"));
+		this.getPlateau()[47].setPion(new Pion(Color.GREEN));
+		this.getPlateau()[36].setPion(new Pion(Color.GREEN));this.getPlateau()[37].setPion(new Pion(Color.GREEN));
+		this.getPlateau()[24].setPion(new Pion(Color.GREEN));this.getPlateau()[25].setPion(new Pion(Color.GREEN));
+		this.getPlateau()[26].setPion(new Pion(Color.GREEN));
 	    for(int i=11; i<=14; i++){
-	    	this.getPlateau()[i].setPion(new Pion("VERT"));
+	    	this.getPlateau()[i].setPion(new Pion(Color.GREEN));
 	    }
 	}
 	
+	/**
+	 * Ajoute des pions au triangle gauche en bas
+	 */
 	public void init_GaucheBas(){
-		this.getPlateau()[66].setPion(new Pion("VIOLET"));
-		this.getPlateau()[76].setPion(new Pion("VIOLET"));this.getPlateau()[77].setPion(new Pion("VIOLET"));
-		this.getPlateau()[87].setPion(new Pion("VIOLET"));this.getPlateau()[88].setPion(new Pion("VIOLET"));
-		this.getPlateau()[89].setPion(new Pion("VIOLET"));
+		this.getPlateau()[66].setPion(new Pion(Color.MAGENTA));
+		this.getPlateau()[76].setPion(new Pion(Color.MAGENTA));this.getPlateau()[77].setPion(new Pion(Color.MAGENTA));
+		this.getPlateau()[87].setPion(new Pion(Color.MAGENTA));this.getPlateau()[88].setPion(new Pion(Color.MAGENTA));
+		this.getPlateau()[89].setPion(new Pion(Color.MAGENTA));
 	    for(int i=99; i<=102; i++){
-	    	this.getPlateau()[i].setPion(new Pion("VIOLET"));
+	    	this.getPlateau()[i].setPion(new Pion(Color.MAGENTA));
 	    }
 	}
 	
 	
+	public boolean triangleHautConquis(){
+		Color couleur_presente=Color.WHITE;
+		int v= 0;
+		for(int i=1; i<=10 ; i++){
+			if (getPlateau()[i].getPion()!=null && getPlateau()[i].getPion().getCouleur()!=Color.RED){
+				if (v==0){
+					couleur_presente=getPlateau()[i].getPion().getCouleur();
+					v++;
+				}
+				else if(couleur_presente != getPlateau()[i].getPion().getCouleur()){
+					return false;
+				}
+				
+			}
+			else{
+				return false;
+			}
+		}	
+		if (v>0){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean triangleBasConquis(){
+		Color couleur_presente=Color.WHITE;
+		int v= 0;
+		for(int i=112; i<=121 ; i++){
+			if (getPlateau()[i].getPion()!=null && getPlateau()[i].getPion().getCouleur()!=Color.BLUE){
+				if (v==0){
+					couleur_presente=getPlateau()[i].getPion().getCouleur();
+					v++;
+				}
+				else if(couleur_presente != getPlateau()[i].getPion().getCouleur()){
+					return false;
+				}
+				
+			}
+			else{
+				return false;
+			}
+		}	
+		if (v>0){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean triangleDoiteHautConquis(){
+		
+		if (this.getPlateau()[56].getPion()== null || this.getPlateau()[45].getPion()== null ||
+				this.getPlateau()[46].getPion()== null || this.getPlateau()[33].getPion()== null ||
+				this.getPlateau()[34].getPion()== null || this.getPlateau()[35].getPion()== null ||
+				this.getPlateau()[20].getPion()== null || this.getPlateau()[21].getPion()== null ||
+				this.getPlateau()[22].getPion()== null || this.getPlateau()[23].getPion()== null)
+		{
+			return false;
+		}
+		
+		
+		else if (this.getPlateau()[56].getPion().getCouleur()!=Color.YELLOW) {
+			Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+			
+			if (this.getPlateau()[45].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[46].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[33].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[34].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[35].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[20].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[21].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[22].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[23].getPion().getCouleur()== couleur_presente)
+			{	
+				return true;	
+			}
+			
+			return false;
+		}
+		
+		else{
+			return false;
+		}
+	}
+	
+	
+public boolean triangleDoiteBasConquis(){
+		
+		if (this.getPlateau()[75].getPion()== null || this.getPlateau()[85].getPion()== null ||
+				this.getPlateau()[86].getPion()== null || this.getPlateau()[96].getPion()== null ||
+				this.getPlateau()[97].getPion()== null || this.getPlateau()[98].getPion()== null ||
+				this.getPlateau()[108].getPion()== null || this.getPlateau()[109].getPion()== null ||
+				this.getPlateau()[110].getPion()== null || this.getPlateau()[111].getPion()== null)
+		{
+			return false;
+		}
+		
+		
+		else if (this.getPlateau()[75].getPion().getCouleur()!=Color.BLACK) {
+			Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+			
+			if (this.getPlateau()[85].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[86].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[96].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[97].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[98].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[108].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[109].getPion().getCouleur()== couleur_presente ||
+					this.getPlateau()[110].getPion().getCouleur()== couleur_presente || 
+					this.getPlateau()[111].getPion().getCouleur()== couleur_presente)
+			{	
+				return true;	
+			}
+			
+			return false;
+		}
+		
+		else{
+			return false;
+		}
+	}
+
+
+public boolean triangleGaucheHautConquis(){
+	
+	if (this.getPlateau()[47].getPion()== null || this.getPlateau()[36].getPion()== null ||
+			this.getPlateau()[37].getPion()== null || this.getPlateau()[24].getPion()== null ||
+			this.getPlateau()[25].getPion()== null || this.getPlateau()[26].getPion()== null ||
+			this.getPlateau()[11].getPion()== null || this.getPlateau()[12].getPion()== null ||
+			this.getPlateau()[13].getPion()== null || this.getPlateau()[14].getPion()== null)
+	{
+		return false;
+	}
+	
+	
+	else if (this.getPlateau()[47].getPion().getCouleur()!=Color.GREEN) {
+		Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+		
+		if (this.getPlateau()[36].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[37].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[24].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[25].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[26].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[11].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[12].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[13].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[14].getPion().getCouleur()== couleur_presente)
+		{	
+			return true;	
+		}
+		
+		return false;
+	}
+	
+	else{
+		return false;
+	}
+}
+
+public boolean triangleGaucheBasConquis(){
+	
+	if (this.getPlateau()[66].getPion()== null || this.getPlateau()[76].getPion()== null ||
+			this.getPlateau()[77].getPion()== null || this.getPlateau()[87].getPion()== null ||
+			this.getPlateau()[88].getPion()== null || this.getPlateau()[89].getPion()== null ||
+			this.getPlateau()[99].getPion()== null || this.getPlateau()[100].getPion()== null ||
+			this.getPlateau()[101].getPion()== null || this.getPlateau()[102].getPion()== null)
+	{
+		return false;
+	}
+	
+	
+	else if (this.getPlateau()[66].getPion().getCouleur()!=Color.MAGENTA) {
+		Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+		
+		if (this.getPlateau()[76].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[77].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[87].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[88].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[89].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[99].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[100].getPion().getCouleur()== couleur_presente ||
+				this.getPlateau()[101].getPion().getCouleur()== couleur_presente || 
+				this.getPlateau()[102].getPion().getCouleur()== couleur_presente)
+		{	
+			return true;	
+		}
+		
+		return false;
+	}
+	
+	else{
+		return false;
+	}
+}
+
+
+
+
 }
