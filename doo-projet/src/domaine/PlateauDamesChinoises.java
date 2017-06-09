@@ -475,7 +475,10 @@ public class PlateauDamesChinoises extends Plateau{
 	    }
 	}
 	
-	
+	/**
+	 * Vérifie si touts les pions adverses ont atteint le triangle du haut
+	 * @return
+	 */
 	public boolean triangleHautConquis(){
 		Color couleur_presente=Color.WHITE;
 		int v= 0;
@@ -500,6 +503,11 @@ public class PlateauDamesChinoises extends Plateau{
 		return false;
 	}
 	
+	/**
+	 * Verifie si tous les pions adverses ont atteint le triangle du bas
+	 * 
+	 * @return
+	 */
 	public boolean triangleBasConquis(){
 		Color couleur_presente=Color.WHITE;
 		int v= 0;
@@ -524,6 +532,10 @@ public class PlateauDamesChinoises extends Plateau{
 		return false;
 	}
 	
+	/**
+	 * Verifie si touts les pions ont atteint le triangle haut à droit 
+	 * @return
+	 */
 	public boolean triangleDoiteHautConquis(){
 		
 		if (this.getPlateau()[56].getPion()== null || this.getPlateau()[45].getPion()== null ||
@@ -539,14 +551,14 @@ public class PlateauDamesChinoises extends Plateau{
 		else if (this.getPlateau()[56].getPion().getCouleur()!=Color.YELLOW) {
 			Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
 			
-			if (this.getPlateau()[45].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[46].getPion().getCouleur()== couleur_presente || 
-					this.getPlateau()[33].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[34].getPion().getCouleur()== couleur_presente || 
-					this.getPlateau()[35].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[20].getPion().getCouleur()== couleur_presente || 
-					this.getPlateau()[21].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[22].getPion().getCouleur()== couleur_presente || 
+			if (this.getPlateau()[45].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[46].getPion().getCouleur()== couleur_presente && 
+					this.getPlateau()[33].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[34].getPion().getCouleur()== couleur_presente && 
+					this.getPlateau()[35].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[20].getPion().getCouleur()== couleur_presente && 
+					this.getPlateau()[21].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[22].getPion().getCouleur()== couleur_presente && 
 					this.getPlateau()[23].getPion().getCouleur()== couleur_presente)
 			{	
 				return true;	
@@ -560,7 +572,10 @@ public class PlateauDamesChinoises extends Plateau{
 		}
 	}
 	
-	
+	/**
+	 * verifie si tous les pions ont atteint le triangle de droite en bas
+	 * @return
+	 */
 public boolean triangleDoiteBasConquis(){
 		
 		if (this.getPlateau()[75].getPion()== null || this.getPlateau()[85].getPion()== null ||
@@ -574,16 +589,16 @@ public boolean triangleDoiteBasConquis(){
 		
 		
 		else if (this.getPlateau()[75].getPion().getCouleur()!=Color.BLACK) {
-			Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+			Color couleur_presente=(this.getPlateau()[75].getPion().getCouleur());
 			
-			if (this.getPlateau()[85].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[86].getPion().getCouleur()== couleur_presente || 
-					this.getPlateau()[96].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[97].getPion().getCouleur()== couleur_presente || 
-					this.getPlateau()[98].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[108].getPion().getCouleur()== couleur_presente || 
-					this.getPlateau()[109].getPion().getCouleur()== couleur_presente ||
-					this.getPlateau()[110].getPion().getCouleur()== couleur_presente || 
+			if (this.getPlateau()[85].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[86].getPion().getCouleur()== couleur_presente && 
+					this.getPlateau()[96].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[97].getPion().getCouleur()== couleur_presente && 
+					this.getPlateau()[98].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[108].getPion().getCouleur()== couleur_presente && 
+					this.getPlateau()[109].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[110].getPion().getCouleur()== couleur_presente && 
 					this.getPlateau()[111].getPion().getCouleur()== couleur_presente)
 			{	
 				return true;	
@@ -597,7 +612,10 @@ public boolean triangleDoiteBasConquis(){
 		}
 	}
 
-
+/**
+ * verifie si tous les pions ont atteint le triangle d'en haut à gauche 
+ * @return
+ */
 public boolean triangleGaucheHautConquis(){
 	
 	if (this.getPlateau()[47].getPion()== null || this.getPlateau()[36].getPion()== null ||
@@ -611,16 +629,16 @@ public boolean triangleGaucheHautConquis(){
 	
 	
 	else if (this.getPlateau()[47].getPion().getCouleur()!=Color.GREEN) {
-		Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+		Color couleur_presente=(this.getPlateau()[47].getPion().getCouleur());
 		
-		if (this.getPlateau()[36].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[37].getPion().getCouleur()== couleur_presente || 
-				this.getPlateau()[24].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[25].getPion().getCouleur()== couleur_presente || 
-				this.getPlateau()[26].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[11].getPion().getCouleur()== couleur_presente || 
-				this.getPlateau()[12].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[13].getPion().getCouleur()== couleur_presente || 
+		if (this.getPlateau()[36].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[37].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[24].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[25].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[26].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[11].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[12].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[13].getPion().getCouleur()== couleur_presente && 
 				this.getPlateau()[14].getPion().getCouleur()== couleur_presente)
 		{	
 			return true;	
@@ -634,6 +652,10 @@ public boolean triangleGaucheHautConquis(){
 	}
 }
 
+/**
+ * verifie si tous les pions ont atteint le triangle en bas à gauche
+ * @return
+ */
 public boolean triangleGaucheBasConquis(){
 	
 	if (this.getPlateau()[66].getPion()== null || this.getPlateau()[76].getPion()== null ||
@@ -647,16 +669,16 @@ public boolean triangleGaucheBasConquis(){
 	
 	
 	else if (this.getPlateau()[66].getPion().getCouleur()!=Color.MAGENTA) {
-		Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
+		Color couleur_presente=(this.getPlateau()[66].getPion().getCouleur());
 		
-		if (this.getPlateau()[76].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[77].getPion().getCouleur()== couleur_presente || 
-				this.getPlateau()[87].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[88].getPion().getCouleur()== couleur_presente || 
-				this.getPlateau()[89].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[99].getPion().getCouleur()== couleur_presente || 
-				this.getPlateau()[100].getPion().getCouleur()== couleur_presente ||
-				this.getPlateau()[101].getPion().getCouleur()== couleur_presente || 
+		if (this.getPlateau()[76].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[77].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[87].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[88].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[89].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[99].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[100].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[101].getPion().getCouleur()== couleur_presente && 
 				this.getPlateau()[102].getPion().getCouleur()== couleur_presente)
 		{	
 			return true;	

@@ -102,6 +102,12 @@ public abstract class Plateau {
 	    return res;
 	}
 	
+	/**
+	 * verifie si 2 cases passées en param sont voisines 
+	 * @param c1
+	 * @param v2
+	 * @return
+	 */
 	public boolean estVoisin(Case c1, Case v2){
 		if(c1.getDroite()==v2){
 			return true;

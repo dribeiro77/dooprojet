@@ -24,6 +24,23 @@ public class RoundButton extends JButton {
     setContentAreaFilled(false);
   }
 
+  public RoundButton(String str){
+	  super(str);
+	  cases=null;
+	  
+	// These statements enlarge the button so that it 
+	// becomes a circle rather than an oval.
+	    Dimension size = getPreferredSize();
+	    size.width = size.height = Math.max(size.width, 
+	      size.height);
+	    setPreferredSize(size);
+
+	// This call causes the JButton not to paint 
+	   // the background.
+	// This allows us to paint a round background.
+	    setContentAreaFilled(false);
+	  
+  }
 
 
 public Case getCases() {
@@ -40,10 +57,10 @@ public void setCases(Case cases) {
 
 // Paint the round background and label.
   protected void paintComponent(Graphics g) {
-    if (cases.getPion()!=null) {
+    if (cases!=null) {
+    	if(cases.getPion()!=null){
 // You might want to make the highlight color 
    // a property of the RoundButton class.
-    	
       g.setColor(cases.getPion().getCouleur());
     } else {
       g.setColor(getBackground());
@@ -55,6 +72,19 @@ public void setCases(Case cases) {
    // focus rectangle.
     super.paintComponent(g);
   }
+    else{
+    	
+      g.setColor(getBackground());
+    }
+    g.fillOval(0, 0, getSize().width-1, 
+      getSize().height-1);
+
+// This call will paint the label and the 
+   // focus rectangle.
+    super.paintComponent(g);
+    }
+  
+  
 
 // Paint the border of the button using a simple stroke.
   protected void paintBorder(Graphics g) {

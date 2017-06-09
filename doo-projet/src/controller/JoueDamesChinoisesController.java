@@ -11,6 +11,7 @@ public class JoueDamesChinoisesController {
 	
 	public JoueDamesChinoisesController(Partie part){
 		partie=part;
+		init_partie();
 	}
 	
 	/**
@@ -87,33 +88,16 @@ public class JoueDamesChinoisesController {
 	 * @param mangee
 	 */
 	public void sautePion(Case saute, Case aterit){
+			aterit.setPion(saute.getPion());
+			saute.setPion(null);
 		
-		if(saute.getBas_droite()==aterit){
-			aterit.setPion(saute.getPion());
-			saute.setPion(null);
-		}
-		else if(saute.getBas_gauche()==aterit){
-			aterit.setPion(saute.getPion());
-			saute.setPion(null);
-		}
-		else if(saute.getHaut_droite()==aterit){
-			aterit.setPion(saute.getPion());
-			saute.setPion(null);
-		}
-		else if(saute.getHaut_gauche()==aterit){
-			aterit.setPion(saute.getPion());
-			saute.setPion(null);
-		}
-		else if(saute.getDroite()==aterit){
-			aterit.setPion(saute.getPion());
-			saute.setPion(null);
-		}
-		else if(saute.getGauche()==aterit){
-			aterit.setPion(saute.getPion());
-			saute.setPion(null);
-		}
 	}
 	
+	/**
+	 * Liste de tous les mouvements possibles
+	 * @param n
+	 * @return
+	 */
 	public ArrayList<Case> mouvements_possibles(Case n){
 		ArrayList<Case> list1 = partie.getPlateau().deplacements_simples(n);
 		list1.addAll(((PlateauDamesChinoises)partie.getPlateau()).sauts_disponibles(n));
@@ -128,6 +112,11 @@ public class JoueDamesChinoisesController {
 		this.partie = partie;
 	}
 
+	/**
+	 * Vérifie si la partie est finie
+	 * 
+	 * @return
+	 */
 	public boolean partie_finie(){
 		switch (partie.getJoueurs().size()) {
 		case 1:

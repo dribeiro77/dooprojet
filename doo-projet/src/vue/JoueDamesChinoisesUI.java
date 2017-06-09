@@ -1,5 +1,6 @@
 package vue;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -43,7 +44,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
             
 		}
 
-		this.setLayout(new GridLayout(17, 1));
+		this.setLayout(new GridLayout(18, 3));
 		
 		JPanel one = new JPanel();
 		cases[1].addActionListener(this);
@@ -77,9 +78,20 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		one.add(cases[121]);
 		this.add(one);
 		
+		one = new JPanel();
+		JButton quit = new JButton("Quitter");
+		quit.addActionListener(this);
+		one.add(quit, BorderLayout.EAST);
+		this.add(one, BorderLayout.EAST);
+		
         this.setVisible(true);
     }
 
+	/**
+	 * Ajoute les boutons ronds sur la JFrame
+	 * @param min
+	 * @param max
+	 */
 	public void addBetween(int min, int max){
 		JPanel one = new JPanel();
 		for (int i = min; i <= max ; i++) {
@@ -89,21 +101,31 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		this.add(one);
 	}
 
+	/**
+	 * Actions quand on clique sur une case
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println(((RoundButton)e.getSource()).getCases().getId());
+		if(e.getSource().getClass().equals(JButton.class)){
+			dispose();
+		}
+		else{
+			
+			System.out.println(((RoundButton)e.getSource()).getCases().getId());
 		
+			
 		//decolore les mouvements passés 
 		if (((RoundButton)e.getSource()).getCases().getPion()!=null){
 			ArrayList<Case> res = control.mouvements_possibles(selected.getCases());		
 		for (int i = 0; i < res.size(); i++) {
 			cases[res.get(i).getId()].setForeground(Color.GRAY);
 			}
+			selected.setForeground(Color.GRAY);
 		}
 		
 		
-		
+		//si il selectione un boutton coloré
 		if(((RoundButton)e.getSource()).getForeground()==Color.PINK){
 			if(control.getPartie().getPlateau().estVoisin(((RoundButton)e.getSource()).getCases(),selected.getCases())){
 				control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
@@ -140,6 +162,6 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 			JOptionPane.showMessageDialog(this, "PARTIE FINIE!!");
 			dispose();
 		}
-		
+		}
 	}
 }
