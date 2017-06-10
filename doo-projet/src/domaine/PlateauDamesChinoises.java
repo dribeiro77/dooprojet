@@ -480,27 +480,12 @@ public class PlateauDamesChinoises extends Plateau{
 	 * @return
 	 */
 	public boolean triangleHautConquis(){
-		Color couleur_presente=Color.WHITE;
-		int v= 0;
 		for(int i=1; i<=10 ; i++){
-			if (getPlateau()[i].getPion()!=null && getPlateau()[i].getPion().getCouleur()!=Color.RED){
-				if (v==0){
-					couleur_presente=getPlateau()[i].getPion().getCouleur();
-					v++;
-				}
-				else if(couleur_presente != getPlateau()[i].getPion().getCouleur()){
-					return false;
-				}
-				
-			}
-			else{
+			if (getPlateau()[i].getPion()==null || getPlateau()[i].getPion().getCouleur()!=Color.BLUE){
 				return false;
 			}
-		}	
-		if (v>0){
-			return true;
 		}
-		return false;
+		return true;			
 	}
 	
 	/**
@@ -509,27 +494,13 @@ public class PlateauDamesChinoises extends Plateau{
 	 * @return
 	 */
 	public boolean triangleBasConquis(){
-		Color couleur_presente=Color.WHITE;
-		int v= 0;
 		for(int i=112; i<=121 ; i++){
-			if (getPlateau()[i].getPion()!=null && getPlateau()[i].getPion().getCouleur()!=Color.BLUE){
-				if (v==0){
-					couleur_presente=getPlateau()[i].getPion().getCouleur();
-					v++;
-				}
-				else if(couleur_presente != getPlateau()[i].getPion().getCouleur()){
+			if (getPlateau()[i].getPion()==null || getPlateau()[i].getPion().getCouleur()!=Color.RED){
+				
 					return false;
 				}
-				
 			}
-			else{
-				return false;
-			}
-		}	
-		if (v>0){
 			return true;
-		}
-		return false;
 	}
 	
 	/**
@@ -538,6 +509,7 @@ public class PlateauDamesChinoises extends Plateau{
 	 */
 	public boolean triangleDoiteHautConquis(){
 		
+		Color couleur_presente=Color.MAGENTA;
 		if (this.getPlateau()[56].getPion()== null || this.getPlateau()[45].getPion()== null ||
 				this.getPlateau()[46].getPion()== null || this.getPlateau()[33].getPion()== null ||
 				this.getPlateau()[34].getPion()== null || this.getPlateau()[35].getPion()== null ||
@@ -547,24 +519,18 @@ public class PlateauDamesChinoises extends Plateau{
 			return false;
 		}
 		
-		
-		else if (this.getPlateau()[56].getPion().getCouleur()!=Color.YELLOW) {
-			Color couleur_presente=(this.getPlateau()[56].getPion().getCouleur());
-			
-			if (this.getPlateau()[45].getPion().getCouleur()== couleur_presente &&
-					this.getPlateau()[46].getPion().getCouleur()== couleur_presente && 
-					this.getPlateau()[33].getPion().getCouleur()== couleur_presente &&
-					this.getPlateau()[34].getPion().getCouleur()== couleur_presente && 
-					this.getPlateau()[35].getPion().getCouleur()== couleur_presente &&
-					this.getPlateau()[20].getPion().getCouleur()== couleur_presente && 
-					this.getPlateau()[21].getPion().getCouleur()== couleur_presente &&
-					this.getPlateau()[22].getPion().getCouleur()== couleur_presente && 
-					this.getPlateau()[23].getPion().getCouleur()== couleur_presente)
-			{	
-				return true;	
-			}
-			
-			return false;
+		else if (this.getPlateau()[56].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[45].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[46].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[33].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[34].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[35].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[20].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[21].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[22].getPion().getCouleur()== couleur_presente && 
+				this.getPlateau()[23].getPion().getCouleur()== couleur_presente)
+		{	
+			return true;	
 		}
 		
 		else{
@@ -577,7 +543,7 @@ public class PlateauDamesChinoises extends Plateau{
 	 * @return
 	 */
 public boolean triangleDoiteBasConquis(){
-		
+		Color couleur_presente=Color.GREEN;
 		if (this.getPlateau()[75].getPion()== null || this.getPlateau()[85].getPion()== null ||
 				this.getPlateau()[86].getPion()== null || this.getPlateau()[96].getPion()== null ||
 				this.getPlateau()[97].getPion()== null || this.getPlateau()[98].getPion()== null ||
@@ -585,13 +551,10 @@ public boolean triangleDoiteBasConquis(){
 				this.getPlateau()[110].getPion()== null || this.getPlateau()[111].getPion()== null)
 		{
 			return false;
-		}
-		
-		
-		else if (this.getPlateau()[75].getPion().getCouleur()!=Color.BLACK) {
-			Color couleur_presente=(this.getPlateau()[75].getPion().getCouleur());
+		}		
 			
-			if (this.getPlateau()[85].getPion().getCouleur()== couleur_presente &&
+		else if (this.getPlateau()[75].getPion().getCouleur()== couleur_presente &&
+					this.getPlateau()[85].getPion().getCouleur()== couleur_presente &&
 					this.getPlateau()[86].getPion().getCouleur()== couleur_presente && 
 					this.getPlateau()[96].getPion().getCouleur()== couleur_presente &&
 					this.getPlateau()[97].getPion().getCouleur()== couleur_presente && 
@@ -602,10 +565,7 @@ public boolean triangleDoiteBasConquis(){
 					this.getPlateau()[111].getPion().getCouleur()== couleur_presente)
 			{	
 				return true;	
-			}
-			
-			return false;
-		}
+			}		
 		
 		else{
 			return false;
@@ -617,7 +577,7 @@ public boolean triangleDoiteBasConquis(){
  * @return
  */
 public boolean triangleGaucheHautConquis(){
-	
+	Color couleur_presente=Color.BLACK;
 	if (this.getPlateau()[47].getPion()== null || this.getPlateau()[36].getPion()== null ||
 			this.getPlateau()[37].getPion()== null || this.getPlateau()[24].getPion()== null ||
 			this.getPlateau()[25].getPion()== null || this.getPlateau()[26].getPion()== null ||
@@ -626,12 +586,10 @@ public boolean triangleGaucheHautConquis(){
 	{
 		return false;
 	}
-	
-	
-	else if (this.getPlateau()[47].getPion().getCouleur()!=Color.GREEN) {
-		Color couleur_presente=(this.getPlateau()[47].getPion().getCouleur());
 		
-		if (this.getPlateau()[36].getPion().getCouleur()== couleur_presente &&
+		
+	else if (this.getPlateau()[47].getPion().getCouleur()== couleur_presente &&
+				this.getPlateau()[36].getPion().getCouleur()== couleur_presente &&
 				this.getPlateau()[37].getPion().getCouleur()== couleur_presente &&
 				this.getPlateau()[24].getPion().getCouleur()== couleur_presente &&
 				this.getPlateau()[25].getPion().getCouleur()== couleur_presente && 
@@ -643,9 +601,7 @@ public boolean triangleGaucheHautConquis(){
 		{	
 			return true;	
 		}
-		
-		return false;
-	}
+	
 	
 	else{
 		return false;
@@ -657,7 +613,7 @@ public boolean triangleGaucheHautConquis(){
  * @return
  */
 public boolean triangleGaucheBasConquis(){
-	
+	Color couleur_presente=Color.YELLOW;
 	if (this.getPlateau()[66].getPion()== null || this.getPlateau()[76].getPion()== null ||
 			this.getPlateau()[77].getPion()== null || this.getPlateau()[87].getPion()== null ||
 			this.getPlateau()[88].getPion()== null || this.getPlateau()[89].getPion()== null ||
@@ -668,10 +624,10 @@ public boolean triangleGaucheBasConquis(){
 	}
 	
 	
-	else if (this.getPlateau()[66].getPion().getCouleur()!=Color.MAGENTA) {
-		Color couleur_presente=(this.getPlateau()[66].getPion().getCouleur());
+
 		
-		if (this.getPlateau()[76].getPion().getCouleur()== couleur_presente &&
+	else if (this.getPlateau()[66].getPion().getCouleur()==couleur_presente &&
+				this.getPlateau()[76].getPion().getCouleur()== couleur_presente &&
 				this.getPlateau()[77].getPion().getCouleur()== couleur_presente && 
 				this.getPlateau()[87].getPion().getCouleur()== couleur_presente &&
 				this.getPlateau()[88].getPion().getCouleur()== couleur_presente && 
@@ -684,8 +640,7 @@ public boolean triangleGaucheBasConquis(){
 			return true;	
 		}
 		
-		return false;
-	}
+	
 	
 	else{
 		return false;

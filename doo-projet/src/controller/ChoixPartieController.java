@@ -56,6 +56,7 @@ public class ChoixPartieController {
 			}
 			else{
 				partie.setCouleurParJoueur(nbr);
+				return true;
 			}
 		}
 		if (partie.getJoueurs().size() == 3){
@@ -64,6 +65,7 @@ public class ChoixPartieController {
 			}
 			else{
 				partie.setCouleurParJoueur(nbr);
+				return true;
 			}
 		}
 		if (partie.getJoueurs().size() == 2 || partie.getJoueurs().size() == 1 ){
@@ -72,6 +74,7 @@ public class ChoixPartieController {
 			}
 			else{
 				partie.setCouleurParJoueur(nbr);
+				return true;
 			}
 		}
 		
@@ -95,9 +98,12 @@ public class ChoixPartieController {
 		if (partie.getJeu()!=null){
 			if (partie.getJeu().equalsIgnoreCase("Dames Chinoises")){
 				partie.setPlateau(new PlateauDamesChinoises());
+				return true;
 			}
 			
+			//ABALONE
 			return true;
+			
 		}
 		else return false;
 	}

@@ -20,9 +20,9 @@ import domaine.Joueur;
  */
 
 
-public class ReglageAbalone extends JFrame implements ActionListener {
+public class ReglageAbaloneUI extends JFrame implements ActionListener {
     private ChoixPartieController control;
-    public ReglageAbalone(){
+    public ReglageAbaloneUI(){
         super("Réglage Abalone");
         control = new ChoixPartieController();
         setSize(850,650);
@@ -72,7 +72,7 @@ public class ReglageAbalone extends JFrame implements ActionListener {
     JButton ajoutAba = new JButton( new AbstractAction("Ajouter joueur") {
         @Override
         public void actionPerformed( ActionEvent e ) {
-            String pseudo=JOptionPane.showInputDialog(null, "Pseudo � ajouter");
+            String pseudo=JOptionPane.showInputDialog(null, "Pseudo a ajouter");
             if(control.ajouteJoueurAbalone(pseudo)){
                 Object listeeJ[]=control.getPartie().getJoueurs().toArray();
                 String p[] = new String[listeeJ.length];
@@ -130,13 +130,10 @@ public class ReglageAbalone extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 control.choixJeu("Abalone");
-                if(control.test_clic()){
+               
                     dispose();
                     ChoixPartieUI back = new ChoixPartieUI();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Ne peut pas lancer la partie", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
+               
             }
         });
 

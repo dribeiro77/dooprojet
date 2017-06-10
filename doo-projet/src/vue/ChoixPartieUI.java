@@ -123,7 +123,7 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 				control.choixJeu("Abalone");
 				if(control.lancePartie()){
 					dispose();
-					ReglageAbalone reg2 = new ReglageAbalone();
+					ReglageAbaloneUI reg2 = new ReglageAbaloneUI();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Ne peut pas lancer la partie", "Erreur", JOptionPane.ERROR_MESSAGE);

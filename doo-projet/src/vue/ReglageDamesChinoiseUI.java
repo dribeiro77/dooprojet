@@ -24,12 +24,11 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
     private ChoixPartieController control;
 
     public ReglageDamesChinoiseUI() {
-        super("Réglage Dames Chinoise");
+        super("Reglage Dames Chinoise");
         control = new ChoixPartieController();
         setSize(850, 650);
         setVisible(true);
         setLocationRelativeTo(null);
-        //add(new JLabel(new ImageIcon("fondchoix.jpeg")));
         draw();
         revalidate();
 
@@ -69,7 +68,7 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
         JButton ajout = new JButton(new AbstractAction("Ajouter joueur") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String pseudo = JOptionPane.showInputDialog(null, "Pseudo à ajouter");
+                String pseudo = JOptionPane.showInputDialog(null, "Pseudo a ajouter");
                 if (control.ajouteJoueurDames(pseudo)) {
                     Object listee[] = control.getPartie().getJoueurs().toArray();
                     String j[] = new String[listee.length];
@@ -91,10 +90,10 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
         flow = new JPanel();
         flow.setLayout(new FlowLayout());
 
-        JLabel nb_joueurs_DC = new JLabel("Nombre de joueurs : ");
+        JLabel nb_joueurs_DC = new JLabel("Nombre de couleurs par joueur : ");
         flow.add(nb_joueurs_DC, BorderLayout.SOUTH);
         nb_joueurs_DC.setFont(new Font("Batang", 20, 15));
-        String labels[] = {"0", "1", "2", "3", "4"};
+        String labels[] = {"1", "2", "3"};
         JComboBox comboBox = new JComboBox(labels);
         comboBox.setSize(20, 30);
         flow.add(comboBox);
@@ -120,9 +119,8 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
         JButton play = new JButton(new AbstractAction("Jouer") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                control.getPartie().setCouleurParJoueur(comboBox.getSelectedIndex());
                 control.choixJeu("Dames Chinoises");
-                if (control.lancePartie()) {
+                if (control.lancePartie() && control.choixCouleurParJoueur(comboBox.getSelectedIndex()+1)) {
                     dispose();
                     JoueDamesChinoisesController joue = new JoueDamesChinoisesController(control.getPartie());
                     JoueDamesChinoisesUI ui = new JoueDamesChinoisesUI(joue);
@@ -140,13 +138,10 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 control.choixJeu("Dames Chinoise");
-                if(control.test_clic()){
+        
                     dispose();
                     ChoixPartieUI back = new ChoixPartieUI();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null, "Ne peut pas lancer la partie", "Erreur", JOptionPane.ERROR_MESSAGE);
-                }
+                
             }
         });
 
