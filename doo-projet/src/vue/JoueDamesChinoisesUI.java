@@ -30,14 +30,15 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		control=c;
 		setSize(1000, 700);
 		setVisible(true);
-		setLocationRelativeTo(null);	
+		setLocationRelativeTo(null);
 		draw();
 		//this.add(plat);
 		this.revalidate();
 	}
 	
 	public void draw(){
-		
+
+
 		PlateauDamesChinoises plateau = (PlateauDamesChinoises) control.getPartie().getPlateau();
 		for(int i=1; i<=121; i++){
 			cases[i]= new RoundButton(plateau.getPlateau()[i]);
@@ -45,7 +46,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		}
 
 		this.setLayout(new GridLayout(18, 3));
-		
+
 		JPanel one = new JPanel();
 		cases[1].addActionListener(this);
 		one.add(cases[1]);
@@ -115,7 +116,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 			System.out.println(((RoundButton)e.getSource()).getCases().getId());
 		
 			
-		//decolore les mouvements passés 
+		//decolore les mouvements passï¿½s 
 		if (((RoundButton)e.getSource()).getCases().getPion()!=null){
 			ArrayList<Case> res = control.mouvements_possibles(selected.getCases());		
 		for (int i = 0; i < res.size(); i++) {
@@ -125,7 +126,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		}
 		
 		
-		//si il selectione un boutton coloré
+		//si il selectione un boutton colorï¿½
 		if(((RoundButton)e.getSource()).getForeground()==Color.PINK){
 			if(control.getPartie().getPlateau().estVoisin(((RoundButton)e.getSource()).getCases(),selected.getCases())){
 				control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
@@ -134,7 +135,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 				control.sautePion(selected.getCases(), ((RoundButton)e.getSource()).getCases());
 			}
 			
-			//decolore les mouvements passés 
+			//decolore les mouvements passï¿½s 
 			if (((RoundButton)e.getSource()).getCases().getPion()!=null){
 				ArrayList<Case> res = control.mouvements_possibles(selected.getCases());		
 			for (int i = 0; i < res.size(); i++) {
