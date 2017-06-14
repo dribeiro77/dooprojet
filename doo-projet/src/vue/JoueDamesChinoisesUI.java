@@ -24,6 +24,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 	RoundButton cases[] = new RoundButton[122];
 	//JPanel plat = new JPanel();
 	RoundButton selected = new RoundButton(new Case(0));
+	int mouvement;
 	
 	public JoueDamesChinoisesUI(JoueDamesChinoisesController c){
 		super("Dammes Chinoises");
@@ -114,7 +115,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		else{
 			
 			System.out.println(((RoundButton)e.getSource()).getCases().getId());
-		
+			mouvement=0;
 			
 		//decolore les mouvements pass�s 
 		if (((RoundButton)e.getSource()).getCases().getPion()!=null){
@@ -128,6 +129,8 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 		
 		//si il selectione un boutton color�
 		if(((RoundButton)e.getSource()).getForeground()==Color.PINK){
+			((RoundButton)e.getSource()).setForeground(Color.GRAY);
+			mouvement=1;
 			if(control.getPartie().getPlateau().estVoisin(((RoundButton)e.getSource()).getCases(),selected.getCases())){
 				control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
 			}
@@ -143,11 +146,14 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 				}
 			}
 			
+			revalidate();
 			
 		}
 		
 		
-	
+		if (mouvement==0 ){
+			
+		
 		//collore mouvements possibles
 		if (((RoundButton)e.getSource()).getCases().getPion()!=null){
 			ArrayList<Case> res = control.mouvements_possibles(((RoundButton)e.getSource()).getCases());
@@ -156,8 +162,12 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 			}
 		}
 		
+		}
 		
+		selected.setForeground(Color.GRAY);
 		selected=((RoundButton)e.getSource());
+		
+		
 		
 		if(control.partie_finie()){
 			JOptionPane.showMessageDialog(this, "PARTIE FINIE!!");
