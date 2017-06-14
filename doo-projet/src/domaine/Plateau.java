@@ -23,7 +23,7 @@ public abstract class Plateau {
 	}
 	
 	/**
-	 * Vérification
+	 * Vï¿½rification
 	 */
 	
 	void afficher_voisins_console(Case n){
@@ -48,7 +48,7 @@ public abstract class Plateau {
 	}
 	
 	/**
-	 * Retourne les cases voisines où le pion peut se déplacer à partir de sa case
+	 * Retourne les cases voisines oï¿½ le pion peut se dï¿½placer ï¿½ partir de sa case
 	 * @param n
 	 * @return
 	 */
@@ -56,14 +56,15 @@ public abstract class Plateau {
 		
 		ArrayList<Case> res = new ArrayList();
 
-	    //mouvements à droite
-	    if (n.getDroite() != null){
+	    //mouvements ï¿½ droite
+	   
+		if (n.getDroite() != null){
 	        if (n.getDroite().getPion() == null){
 	            res.add(n.getDroite());
 	        }
 	    }
 
-	    //mouvements à gauche
+	    //mouvements ï¿½ gauche
 	    if (n.getGauche() != null){
 	        if (n.getGauche().getPion() == null){
 	            res.add(n.getGauche());
@@ -103,7 +104,7 @@ public abstract class Plateau {
 	}
 	
 	/**
-	 * verifie si 2 cases passées en param sont voisines 
+	 * verifie si 2 cases passï¿½es en param sont voisines 
 	 * @param c1
 	 * @param v2
 	 * @return

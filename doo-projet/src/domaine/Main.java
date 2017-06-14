@@ -18,7 +18,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		CRUD a = new CRUD();
+	/*	CRUD a = new CRUD();
 		Joueur J = new Joueur("Karim");
 		try {
 			a.connection();
@@ -59,8 +59,6 @@ public class Main {
 		}
 		
 
-	    
- /* JTable */
 		
 		ResultSet rs = null;
 		
@@ -83,6 +81,6 @@ public class Main {
 		
 	}
 		
-		
-
-}
+		*/
+		PlateauAbalone board = new PlateauAbalone(5);
+}}
