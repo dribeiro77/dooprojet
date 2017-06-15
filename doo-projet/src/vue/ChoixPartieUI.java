@@ -40,7 +40,7 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 
 		// LEFT : Dames Chinoises
 		flow.setLayout(new FlowLayout());
-		left.setLayout(new GridLayout(3, 1));
+		left.setLayout(new GridLayout(4, 1));
 		left.setBorder(BorderFactory.createLineBorder(Color.white, 10));
 		right.setBorder(BorderFactory.createLineBorder(Color.white,10));
 
@@ -87,6 +87,23 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 		left.add(flow);
 		this.add(left);
 
+		// CASE N°4 :
+		flow = new JPanel();
+		flow.setLayout(new FlowLayout());
+
+		JButton classement_DM = new JButton( new AbstractAction("Classement") {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				control.choixJeu("Dames Chinoise");
+				dispose();
+				//Addichage classement Dames Chinoises
+			}
+		});
+		flow.add(classement_DM);
+		flow.setBackground(Color.lightGray);
+		left.add(flow);
+		this.add(left);
+
 
 		/*__________________________________________________________________________________________________________
 		__________________________________________________________________________________________________________*/
@@ -97,7 +114,7 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 		// CASE N°1 : Nom
 		flow = new JPanel();
 		flow.setLayout(new FlowLayout());
-		right.setLayout(new GridLayout(3, 1));
+		right.setLayout(new GridLayout(4, 1));
 
 		JLabel abalone = new JLabel("ABALONE",JLabel.CENTER);
 		abalone.setFont(new Font("Batang",20,40));
@@ -136,6 +153,23 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 
 		this.add(right);
 
+		// CASE N°4 :
+		flow = new JPanel();
+		flow.setLayout(new FlowLayout());
+
+		JButton classement_A = new JButton( new AbstractAction("Classement") {
+			@Override
+			public void actionPerformed( ActionEvent e ) {
+				control.choixJeu("Dames Chinoise");
+
+				dispose();
+				//Affichage classement abalone
+			}
+		});
+		flow.add(classement_A);
+		flow.setBackground(Color.lightGray);
+		right.add(flow);
+		this.add(right);
 	}
 
 

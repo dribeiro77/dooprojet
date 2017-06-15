@@ -175,5 +175,8 @@ public class JoueDamesChinoisesController {
 	}
 		return false;
 	}
-	
+
+	public void choixJeu(String str){
+		partie.setJeu(str);
+	}
 }
