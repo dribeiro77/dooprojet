@@ -2,6 +2,7 @@
 package domaine;
 import java.awt.Color;
 import java.lang.Math;
+import java.util.ArrayList;
 
 /**
  * Created by Radu et karim on 09/06/17.
@@ -9,7 +10,8 @@ import java.lang.Math;
 
 public class PlateauAbalone extends Plateau {
     private int baseHex; // Nombre de cases d'un côté du plateau hexagonal
-   
+    private int nbCases; // Nombre total de cases du plateau
+
     /* GETTERS */
     
     
@@ -31,16 +33,14 @@ public class PlateauAbalone extends Plateau {
     	super();
         this.baseHex = baseHex; // Habituellement : 5
         calculerNbCases();
-        System.out.println("Base hexagone : " + getBaseHex() + " => nombre de cases du plateau : " + getNbCases());
-        
-    	super.setNbCases(this.calculerNbCases());   
+    	this.setNbCases(this.calculerNbCases());
     	this.setPlateau(initPlateau());
     	
     }
     
     /* AUTRES METHODES */
     private int calculerNbCases() {
-        int nbCases = 0;
+        nbCases = 0;
         for (int i = 0; i < baseHex - 1; i++) {
             nbCases += 2 * (baseHex + i);
         }
@@ -61,17 +61,16 @@ public class PlateauAbalone extends Plateau {
     
     public Case[] initPlateau() {
         Case[] plateau = new Case[getNbCases()];
-      
         
-        for (int i = 0; i < getNbCases(); i++) { // Impossible de combiner les deux boucles
+        for (int i = 0; i < nbCases; i++) { // Impossible de combiner les deux boucles
             plateau[i] = new Case(i);
         }
 
         int j = 0, // Correspond à la ligne du plateau. Artifice utile pour son initialisation
             t = 0; // Variable tampon
-        for (int i = 0; i < getNbCases(); i++) {
+        for (int i = 0; i < nbCases; i++) {
             if (i != t + baseHex + zigzag(j) - 1) { // Toutes les cases, sauf celles en fin de ligne ...
-                if (i + 1 < getNbCases()) { plateau[i].setDroite(plateau[i + 1]); } // ... ont une voisine à droite
+                if (i + 1 < nbCases) { plateau[i].setDroite(plateau[i + 1]); } // ... ont une voisine à droite
             }
 
             if (i != t + baseHex + zigzag(j)) { // Toutes cles cases, sauf celles en début de ligne ...
@@ -117,13 +116,13 @@ public class PlateauAbalone extends Plateau {
             {
                 if (i != t + baseHex + zigzag(j) - 1) { // ... sauf celles de la moitié basse, en fin de ligne
                     if (j<baseHex-1) plateau[i].setBas_droite(plateau[i + baseHex + zigzag(j)+1]);
-                    else if (i + baseHex + zigzag(j) < getNbCases())
+                    else if (i + baseHex + zigzag(j) < nbCases)
                         plateau[i].setBas_droite(plateau[i + baseHex + zigzag(j)]);
                 }
                 if (j<baseHex-1) plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j)]);
                 else
                     // Si cette ligne est décommentée, seules les cases de 0 à 25 seront initalisées
-                    if (i + baseHex + zigzag(j) - 1 < getNbCases())
+                    if (i + baseHex + zigzag(j) - 1 < nbCases)
                     {
                         plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j) - 1]);
                     }
@@ -151,7 +150,7 @@ public class PlateauAbalone extends Plateau {
 	 * Ajout des pions en haut du plateau
 	 */
     
-public void ajout_pions_haut_classique(){
+    public void ajout_pions_haut_classique(){
 	    
 	    for(int i=0; i<=15 ; i++){
 	    	if (i != 11 && i !=12)
@@ -159,23 +158,23 @@ public void ajout_pions_haut_classique(){
 	    }
 	}
 
-public void ajout_pions_haut_original(){
-	
-	for(int i=0; i<17 ; i++){
-    	if (i != 1 && i !=1 && i!=5 && i!=10 && i!=11)
-    	this.getPlateau()[i].setPion(new Pion(Color.RED));
-    	
+    public void ajout_pions_haut_original(){
+
+        for(int i=0; i<17 ; i++){
+            if (i != 1 && i !=1 && i!=5 && i!=10 && i!=11)
+            this.getPlateau()[i].setPion(new Pion(Color.RED));
+
+        }
+        this.getPlateau()[22].setPion(new Pion(Color.BLACK));
+        this.getPlateau()[21].setPion(new Pion(Color.BLACK));
+
     }
-	this.getPlateau()[22].setPion(new Pion(Color.BLACK));
-	this.getPlateau()[21].setPion(new Pion(Color.BLACK));
-	
-}
 
-/**
-* Ajout des pions en bas du plateau
-*/
+    /**
+    * Ajout des pions en bas du plateau
+    */
 
-public void ajout_pions_bas_classique(){
+    public void ajout_pions_bas_classique(){
    
    for(int i=60; i>= 45 ; i--){
 	   if(i!= 48 && i!=49)
@@ -184,7 +183,7 @@ public void ajout_pions_bas_classique(){
 }
 
 
-public void ajout_pions_bas_original(){
+    public void ajout_pions_bas_original(){
 	
 	for(int i=60; i> 43 ; i--){
 		   if(i!= 60 && i!=50 && i!=56 && i!=55 )
@@ -195,87 +194,126 @@ public void ajout_pions_bas_original(){
 	
 }
 
-/**
-* Vérification du placement des pions 
-*/
+    /**
+    * Vérification du placement des pions
+    */
 
-public void lister_pions()
-{
-	for(int i=0 ; i< getNbCases() ; i++)
-	{	if (this.getPlateau()[i].getPion()!=null )
-		System.out.println(i);
-	}
-		
-	}
-
-/* Affichage plateau console */
-
-public void printPlateau() {
-    int i = 0, j = 0, t = 0;
-    Case c;
-    do {
-        if (i == t + baseHex + zigzag(j)) {
-            t = i;
-            j++;
-            System.out.print("\n");
-        }
-        //c = getPlateau()[i];
-        if (getPlateau()[i].getPion() != null) {
-            System.out.print(" x ");
-        }
-        else {
-            System.out.print(" . ");
-        }
-
-        i++;
-    }while(i < getNbCases());
-
-}
-
-/* DEPLACEMENTS */
-public void deplacementSimple(Case source, String direction) {
-    Pion pion = source.getPion();
-
-    switch (direction)
+    public void lister_pions()
     {
-        case "HD" :
-            if (source.getHaut_droite().getPion() == null)
-                source.getHaut_droite().setPion(pion);
-            break;
-        case "D" :
-            if (source.getDroite().getPion() == null)
-                source.getDroite().setPion(pion);
-            break;
-        case "BD" :
-            if (source.getBas_droite().getPion() == null)
-                source.getBas_droite().setPion(pion);
-            break;
+        for(int i=0 ; i< nbCases ; i++)
+        {	if (this.getPlateau()[i].getPion()!=null )
+            System.out.println(i);
+        }
 
-        case "BG" :
-            if (source.getBas_gauche().getPion() == null)
-                source.getBas_gauche().setPion(pion);
-            break;
+	}
 
-        case "G" :
-            if (source.getGauche().getPion() == null)
-                source.getGauche().setPion(pion);
-            break;
 
-        case "HG" :
-            if (source.getHaut_gauche().getPion() == null)
-                source.getHaut_gauche().setPion(pion);
-            break;
+	public void printPlateau() {
+        int i = 0, j = 0, t = 0;
+        Case c;
+        do {
+            if (i == t + baseHex + zigzag(j)) {
+                t = i;
+                j++;
+                System.out.print("\n");
+            }
+            //c = getPlateau()[i];
+            if (getPlateau()[i].getPion() != null) {
+                System.out.print(" x ");
+            }
+            else {
+                System.out.print(" . ");
+            }
+
+            i++;
+        }while(i < nbCases);
+
     }
-    source.setPion(null);
+
+
+    /* DEPLACEMENTS */
+
+    /*
+        public void deplacementSimple(Case source, String direction) { // Un mouvement simple change le pion de place
+            Pion pion = source.getPion();
+            Case destination = source;
+            switch (direction)
+            {
+                case "HD" :
+                    if (source.getHaut_droite().getPion() == null)
+                        //source.getHaut_droite().setPion(pion);
+                        destination = source.getHaut_droite();
+                    break;
+                case "D" :
+                    if (source.getDroite().getPion() == null)
+                        //source.getDroite().setPion(pion);
+                        destination = source.getDroite();
+                    break;
+                case "BD" :
+                    if (source.getBas_droite().getPion() == null)
+                        //source.getBas_droite().setPion(pion);
+                        destination = source.getBas_droite();
+                    break;
+                case "BG" :
+                    if (source.getBas_gauche().getPion() == null)
+                        //source.getBas_gauche().setPion(pion);
+                        destination = source.getBas_gauche();
+                    break;
+                case "G" :
+                    if (source.getGauche().getPion() == null)
+                        //source.getGauche().setPion(pion);
+                        destination = source.getGauche();
+                    break;
+                case "HG" :
+                    if (source.getHaut_gauche().getPion() == null)
+                        //source.getHaut_gauche().setPion(pion);
+                        destination = source.getHaut_gauche();
+                    break;
+            }
+            changePlacePion(source, destination);
+        }
+
+    */
+
+    public void changePlacePion(Case source, Case destination) {
+        if (destination != source) {
+            destination.setPion(source.getPion());
+            source.setPion(null);
+        }
+    }
+
+    public void deplacement(ArrayList<Case> selection, String direction) {
+        // On suppose que la liste des pions sélectionnés est triée par indice de case croissant
+        int taille = selection.size(); // Longueur de la liste des pions sélectionnés
+        switch (direction)
+        {
+            case "HD" : // L'indice décroît
+                // Le dernier pion change de place en HD du premier
+                changePlacePion(selection.get(taille - 1), selection.get(0).getHaut_droite());
+                break;
+            case "D" : // L'indice croît
+                // Le premier pion change de place à D du dernier
+                changePlacePion(selection.get(0), selection.get(taille - 1).getDroite());
+                break;
+            case "BD" : // L'indice croît
+                // Le premier pion change de place en BD du dernier
+                changePlacePion(selection.get(0), selection.get(taille - 1).getBas_droite());
+                break;
+
+            case "BG" : // L'indice croît
+                // Le premier pion change de place en BG du dernier
+                changePlacePion(selection.get(0), selection.get(taille - 1).getBas_gauche());
+                break;
+
+            case "G" : // L'indice décroît
+                // Le dernier pion change de place à G du premier
+                changePlacePion(selection.get(taille - 1), selection.get(0).getGauche());
+                break;
+
+            case "HG" : // L'indice décroît
+                // Le dernier pion change de place en HG du premier
+                changePlacePion(selection.get(taille - 1), selection.get(0).getHaut_gauche());
+                break;
+        }
+    }
 }
-
-
-
-
-
-
-
-}
-
-
-
