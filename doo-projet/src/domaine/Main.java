@@ -91,10 +91,12 @@ public class Main {
 		System.out.println("");
 		}
 		
+		board.ajout_pions_bas_original();
+		board.ajout_pions_haut_original();
 		
+		// board.lister_pions();
 		
-		
-		
+	
 		
 		
 		

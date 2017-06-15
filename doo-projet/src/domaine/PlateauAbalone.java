@@ -1,5 +1,6 @@
 
 package domaine;
+import java.awt.Color;
 import java.lang.Math;
 
 /**
@@ -27,14 +28,16 @@ public class PlateauAbalone extends Plateau {
     
     /* CONSTUCTEURS */
     public PlateauAbalone(int baseHex) {
-        super();
+      
+    	super();
         this.baseHex = baseHex; // Habituellement : 5
         calculerNbCases();
         System.out.println("Base hexagone : " + getBaseHex() + " => nombre de cases du plateau : " + getNbCases());
         
     	this.setNbCases(this.calculerNbCases());   
     	this.setPlateau(initPlateau());
-    	}
+    	
+    }
     
     /* AUTRES METHODES */
     private int calculerNbCases() {
@@ -56,6 +59,7 @@ public class PlateauAbalone extends Plateau {
         return res;
     }
 
+    
     public Case[] initPlateau() {
         Case[] plateau = new Case[getNbCases()];
         System.out.println(nbCases);
@@ -143,6 +147,72 @@ public class PlateauAbalone extends Plateau {
         plateau[35].setHaut_gauche(plateau[26]);
         return plateau ;
     }
+    
+    /**
+	 * Ajout des pions en haut du plateau
+	 */
+    
+public void ajout_pions_haut_classique(){
+	    
+	    for(int i=0; i<=15 ; i++){
+	    	if (i != 11 && i !=12)
+	    	this.getPlateau()[i].setPion(new Pion(Color.RED));
+	    }
+	}
+
+public void ajout_pions_haut_original(){
+	
+	for(int i=0; i<17 ; i++){
+    	if (i != 1 && i !=1 && i!=5 && i!=10 && i!=11)
+    	this.getPlateau()[i].setPion(new Pion(Color.RED));
+    	
+    }
+	this.getPlateau()[22].setPion(new Pion(Color.BLACK));
+	this.getPlateau()[21].setPion(new Pion(Color.BLACK));
+	
 }
+
+/**
+* Ajout des pions en bas du plateau
+*/
+
+public void ajout_pions_bas_classique(){
+   
+   for(int i=60; i>= 45 ; i--){
+	   if(i!= 48 && i!=49)
+   	this.getPlateau()[i].setPion(new Pion(Color.BLACK));
+   }
+}
+
+
+public void ajout_pions_bas_original(){
+	
+	for(int i=60; i> 43 ; i--){
+		   if(i!= 60 && i!=50 && i!=56 && i!=55 )
+	   	this.getPlateau()[i].setPion(new Pion(Color.BLACK));
+	   }
+	this.getPlateau()[38].setPion(new Pion(Color.BLACK));
+	this.getPlateau()[39].setPion(new Pion(Color.BLACK));
+	
+}
+
+/**
+* Vérification du placement des pions 
+*/
+
+public void lister_pions()
+{
+	for(int i=0 ; i< nbCases ; i++)
+	{	if (this.getPlateau()[i].getPion()!=null )
+		System.out.println(i);
+	}
+		
+	}
+
+
+
+
+}
+
 
 
