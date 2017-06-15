@@ -211,18 +211,24 @@ public class PlateauAbalone extends Plateau {
 	public void printPlateau() {
         int i = 0, j = 0, t = 0;
         Case c;
+        for (int k = 0; k < zigzag(j + 4); k++) {
+            System.out.print("  ");
+        }
         do {
             if (i == t + baseHex + zigzag(j)) {
                 t = i;
                 j++;
                 System.out.print("\n");
+                for (int k = 0; k < zigzag(j + 4); k++) {
+                    System.out.print("  ");
+                }
             }
             //c = getPlateau()[i];
             if (getPlateau()[i].getPion() != null) {
-                System.out.print(" x ");
+                System.out.print("  x ");
             }
             else {
-                System.out.print(" . ");
+                System.out.print("  . ");
             }
 
             i++;
@@ -233,7 +239,6 @@ public class PlateauAbalone extends Plateau {
 
     /* DEPLACEMENTS */
 
-    /*
         public void deplacementSimple(Case source, String direction) { // Un mouvement simple change le pion de place
             Pion pion = source.getPion();
             Case destination = source;
@@ -273,8 +278,6 @@ public class PlateauAbalone extends Plateau {
             changePlacePion(source, destination);
         }
 
-    */
-
     public void changePlacePion(Case source, Case destination) {
         if (destination != source) {
             destination.setPion(source.getPion());
@@ -282,38 +285,57 @@ public class PlateauAbalone extends Plateau {
         }
     }
 
-    public void deplacement(ArrayList<Case> selection, String direction) {
-        // On suppose que la liste des pions sélectionnés est triée par indice de case croissant
+    public void deplacementLineaire(ArrayList<Case> selection, String direction) {
+    // On suppose que la liste des pions sélectionnés est triée par indice de case croissant
         int taille = selection.size(); // Longueur de la liste des pions sélectionnés
+        Case source = null, destination = null;
         switch (direction)
         {
             case "HD" : // L'indice décroît
                 // Le dernier pion change de place en HD du premier
-                changePlacePion(selection.get(taille - 1), selection.get(0).getHaut_droite());
+                //changePlacePion(selection.get(taille - 1), selection.get(0).getHaut_droite());
+                source = selection.get(taille - 1);
+                destination = selection.get(0).getHaut_droite();
                 break;
             case "D" : // L'indice croît
                 // Le premier pion change de place à D du dernier
-                changePlacePion(selection.get(0), selection.get(taille - 1).getDroite());
+                //changePlacePion(selection.get(0), selection.get(taille - 1).getDroite());
+                source = selection.get(0);
+                destination = selection.get(taille - 1).getDroite();
                 break;
             case "BD" : // L'indice croît
                 // Le premier pion change de place en BD du dernier
-                changePlacePion(selection.get(0), selection.get(taille - 1).getBas_droite());
+                //changePlacePion(selection.get(0), selection.get(taille - 1).getBas_droite());
+                source = selection.get(0);
+                destination = selection.get(taille - 1).getBas_droite();
                 break;
 
             case "BG" : // L'indice croît
                 // Le premier pion change de place en BG du dernier
-                changePlacePion(selection.get(0), selection.get(taille - 1).getBas_gauche());
+                //changePlacePion(selection.get(0), selection.get(taille - 1).getBas_gauche());
+                source = selection.get(0);
+                destination = selection.get(taille - 1).getBas_gauche();
                 break;
 
             case "G" : // L'indice décroît
                 // Le dernier pion change de place à G du premier
-                changePlacePion(selection.get(taille - 1), selection.get(0).getGauche());
+                //changePlacePion(selection.get(taille - 1), selection.get(0).getGauche());
+                source = selection.get(taille - 1);
+                destination = selection.get(0).getGauche();
                 break;
 
             case "HG" : // L'indice décroît
                 // Le dernier pion change de place en HG du premier
-                changePlacePion(selection.get(taille - 1), selection.get(0).getHaut_gauche());
+                //changePlacePion(selection.get(taille - 1), selection.get(0).getHaut_gauche());
+                source = selection.get(taille - 1);
+                destination = selection.get(0).getHaut_gauche();
                 break;
         }
+        changePlacePion(source, destination);
+        System.out.println("\n" + source.getId() + " -> " + destination.getId());
+    }
+
+    public void deplacementLateral(ArrayList<Case> selection, String direction) {
+    // On suppose que la liste des pions sélectionnés est triée par indice de case croissant
     }
 }
