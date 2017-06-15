@@ -73,7 +73,7 @@ public class JoueDamesChinoisesController {
 	}
 	
 	/**
-	 * Effectue le déplacement simple d'un pion entre deux cases
+	 * Effectue le dï¿½placement simple d'un pion entre deux cases
 	 * @param avant
 	 * @param apres
 	 */
@@ -113,7 +113,7 @@ public class JoueDamesChinoisesController {
 	}
 
 	/**
-	 * Vérifie si la partie est finie
+	 * Vï¿½rifie si la partie est finie
 	 * 
 	 * @return
 	 */
@@ -169,5 +169,8 @@ public class JoueDamesChinoisesController {
 	}
 		return false;
 	}
-	
+
+	public void choixJeu(String str){
+		partie.setJeu(str);
+	}
 }
