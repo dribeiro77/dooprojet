@@ -18,8 +18,10 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		CRUD a = new CRUD();
+		
 		Joueur J = new Joueur("Karim");
+	DALJoueur a = new CRUD();
+		
 		try {
 			a.connection();
 		} catch (ClassNotFoundException | SQLException e) {
@@ -101,8 +103,9 @@ public class Main {
 		System.out.println("");
 		}
 		
-		board.ajout_pions_bas_original();
-		board.ajout_pions_haut_original();
+		board.ajout_pions_bas_classique();
+		board.ajout_pions_haut_classique();
+		board.printPlateau();
 		
 		// board.lister_pions();
 		

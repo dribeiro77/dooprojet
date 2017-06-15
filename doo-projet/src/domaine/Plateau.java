@@ -55,7 +55,7 @@ public abstract class Plateau {
 	 * @return
 	 */
 	
-	public ArrayList<Case> deplacements_simples(Case n){
+	public ArrayList<Case> deplacements_simples_possibles(Case n){
 		
 		ArrayList<Case> res = new ArrayList();
 

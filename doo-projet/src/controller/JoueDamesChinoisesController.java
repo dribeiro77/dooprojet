@@ -102,7 +102,7 @@ public class JoueDamesChinoisesController {
 	 */
 	
 	public ArrayList<Case> mouvements_possibles(Case n){
-		ArrayList<Case> list1 = partie.getPlateau().deplacements_simples(n);
+		ArrayList<Case> list1 = partie.getPlateau().deplacements_simples_possibles(n);
 		list1.addAll(((PlateauDamesChinoises)partie.getPlateau()).sauts_disponibles(n));
 		return list1;
 		

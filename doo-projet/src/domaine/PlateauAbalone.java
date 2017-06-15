@@ -9,8 +9,7 @@ import java.lang.Math;
 
 public class PlateauAbalone extends Plateau {
     private int baseHex; // Nombre de cases d'un côté du plateau hexagonal
-    private int nbCases; // Nombre total de cases du plateau
-
+   
     /* GETTERS */
     
     
@@ -34,14 +33,14 @@ public class PlateauAbalone extends Plateau {
         calculerNbCases();
         System.out.println("Base hexagone : " + getBaseHex() + " => nombre de cases du plateau : " + getNbCases());
         
-    	this.setNbCases(this.calculerNbCases());   
+    	super.setNbCases(this.calculerNbCases());   
     	this.setPlateau(initPlateau());
     	
     }
     
     /* AUTRES METHODES */
     private int calculerNbCases() {
-        nbCases = 0;
+        int nbCases = 0;
         for (int i = 0; i < baseHex - 1; i++) {
             nbCases += 2 * (baseHex + i);
         }
@@ -62,17 +61,17 @@ public class PlateauAbalone extends Plateau {
     
     public Case[] initPlateau() {
         Case[] plateau = new Case[getNbCases()];
-        System.out.println(nbCases);
+      
         
-        for (int i = 0; i < nbCases; i++) { // Impossible de combiner les deux boucles
+        for (int i = 0; i < getNbCases(); i++) { // Impossible de combiner les deux boucles
             plateau[i] = new Case(i);
         }
 
         int j = 0, // Correspond à la ligne du plateau. Artifice utile pour son initialisation
             t = 0; // Variable tampon
-        for (int i = 0; i < nbCases; i++) {
+        for (int i = 0; i < getNbCases(); i++) {
             if (i != t + baseHex + zigzag(j) - 1) { // Toutes les cases, sauf celles en fin de ligne ...
-                if (i + 1 < nbCases) { plateau[i].setDroite(plateau[i + 1]); } // ... ont une voisine à droite
+                if (i + 1 < getNbCases()) { plateau[i].setDroite(plateau[i + 1]); } // ... ont une voisine à droite
             }
 
             if (i != t + baseHex + zigzag(j)) { // Toutes cles cases, sauf celles en début de ligne ...
@@ -118,13 +117,13 @@ public class PlateauAbalone extends Plateau {
             {
                 if (i != t + baseHex + zigzag(j) - 1) { // ... sauf celles de la moitié basse, en fin de ligne
                     if (j<baseHex-1) plateau[i].setBas_droite(plateau[i + baseHex + zigzag(j)+1]);
-                    else if (i + baseHex + zigzag(j) < nbCases)
+                    else if (i + baseHex + zigzag(j) < getNbCases())
                         plateau[i].setBas_droite(plateau[i + baseHex + zigzag(j)]);
                 }
                 if (j<baseHex-1) plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j)]);
                 else
                     // Si cette ligne est décommentée, seules les cases de 0 à 25 seront initalisées
-                    if (i + baseHex + zigzag(j) - 1 < nbCases)
+                    if (i + baseHex + zigzag(j) - 1 < getNbCases())
                     {
                         plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j) - 1]);
                     }
@@ -202,12 +201,76 @@ public void ajout_pions_bas_original(){
 
 public void lister_pions()
 {
-	for(int i=0 ; i< nbCases ; i++)
+	for(int i=0 ; i< getNbCases() ; i++)
 	{	if (this.getPlateau()[i].getPion()!=null )
 		System.out.println(i);
 	}
 		
 	}
+
+/* Affichage plateau console */
+
+public void printPlateau() {
+    int i = 0, j = 0, t = 0;
+    Case c;
+    do {
+        if (i == t + baseHex + zigzag(j)) {
+            t = i;
+            j++;
+            System.out.print("\n");
+        }
+        //c = getPlateau()[i];
+        if (getPlateau()[i].getPion() != null) {
+            System.out.print(" x ");
+        }
+        else {
+            System.out.print(" . ");
+        }
+
+        i++;
+    }while(i < getNbCases());
+
+}
+
+/* DEPLACEMENTS */
+public void deplacementSimple(Case source, String direction) {
+    Pion pion = source.getPion();
+
+    switch (direction)
+    {
+        case "HD" :
+            if (source.getHaut_droite().getPion() == null)
+                source.getHaut_droite().setPion(pion);
+            break;
+        case "D" :
+            if (source.getDroite().getPion() == null)
+                source.getDroite().setPion(pion);
+            break;
+        case "BD" :
+            if (source.getBas_droite().getPion() == null)
+                source.getBas_droite().setPion(pion);
+            break;
+
+        case "BG" :
+            if (source.getBas_gauche().getPion() == null)
+                source.getBas_gauche().setPion(pion);
+            break;
+
+        case "G" :
+            if (source.getGauche().getPion() == null)
+                source.getGauche().setPion(pion);
+            break;
+
+        case "HG" :
+            if (source.getHaut_gauche().getPion() == null)
+                source.getHaut_gauche().setPion(pion);
+            break;
+    }
+    source.setPion(null);
+}
+
+
+
 
 
 

@@ -8,12 +8,15 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 import javax.swing.*;
 
 import controller.ChoixPartieController;
 import controller.JoueDamesChinoisesController;
+import domaine.CRUD;
+import domaine.DALJoueur;
 import domaine.Joueur;
 
 /**
@@ -29,6 +32,7 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
         setSize(850, 650);
         setVisible(true);
         setLocationRelativeTo(null);
+      
         draw();
         revalidate();
 
@@ -68,12 +72,14 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
         JButton ajout = new JButton(new AbstractAction("Ajouter joueur") {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	DALJoueur I= new CRUD();
                 String pseudo = JOptionPane.showInputDialog(null, "Pseudo a ajouter");
                 if (control.ajouteJoueurDames(pseudo)) {
                     Object listee[] = control.getPartie().getJoueurs().toArray();
                     String j[] = new String[listee.length];
                     for (int i = 0; i < listee.length; i++) {
                         j[i] = ((Joueur) listee[i]).getPseudo();
+                     
                     }
                     listeJoueurs.setListData(j);
                     revalidate();
