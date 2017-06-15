@@ -9,6 +9,9 @@ public class PlateauAbalone extends Plateau {
     private int nbCases; // Nombre total de cases du plateau
 
     /* GETTERS */
+    
+    
+  
     public int getBaseHex() {
         return baseHex;
     }
