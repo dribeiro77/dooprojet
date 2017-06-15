@@ -23,6 +23,10 @@ public interface DALJoueur {
 	
 	public boolean scoreAbalone(Joueur j , int res) throws SQLException ;
 	public boolean scoreDameChinoise(Joueur j , int res) throws SQLException ;
+	
+	public int ancienscoreAbalone(Joueur j) throws SQLException ;
+	public int ancienScoreDameChinoise(Joueur j)throws SQLException ;
+	
 
 	public void afficher(ResultSet res) throws SQLException;
 

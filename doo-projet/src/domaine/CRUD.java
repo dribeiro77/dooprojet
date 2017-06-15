@@ -137,7 +137,7 @@ public class CRUD implements DALJoueur{
 		id = existance_joueur(j.getPseudo());
 		if(id !=0)
 		{stmt = conn.createStatement();
-		stmt.executeUpdate( "UPDATE JOUEUR SET Score = Score +'"+res+"' WHERE Id = '"+id+"' ;");
+		stmt.executeUpdate( "UPDATE JOUEUR SET Score = '"+res+"' WHERE Id = '"+id+"' ;");
 		return true;
 		}
 		else 
@@ -152,12 +152,45 @@ public class CRUD implements DALJoueur{
 		id = existance_joueur(j.getPseudo());
 		if(id !=0)
 		{stmt = conn.createStatement();
-		stmt.executeUpdate( "UPDATE JOUEUR SET Score2 = Score2 +'"+res+"' WHERE Id = '"+id+"' ;");
+		stmt.executeUpdate( "UPDATE JOUEUR SET Score2 = '"+res+"' WHERE Id = '"+id+"' ;");
 		return true;
 		}
 		else 
 		return false;
 				
+	}
+
+	@Override
+	public int ancienscoreAbalone(Joueur j) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		int id ;
+		id = existance_joueur(j.getPseudo());
+		if(id !=0)
+			
+		stmt = conn.createStatement();
+	    String sql;
+	    sql = "SELECT Score FROM JOUEUR  WHERE Id = '"+id+"' ;";
+	    ResultSet rs = stmt.executeQuery(sql);
+		rs.next();
+	    return rs.getInt(1);
+	}
+
+	@Override
+	public int ancienScoreDameChinoise(Joueur j) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		int id ;
+		id = existance_joueur(j.getPseudo());
+		if(id !=0)
+		
+		stmt = conn.createStatement();
+	    String sql;
+	    sql = "SELECT Score2 FROM JOUEUR  WHERE Id = '"+id+"' ;";
+	    ResultSet rs = stmt.executeQuery(sql);
+		rs.next();
+			
+		return rs.getInt(1);
 	}
 
 	

@@ -18,7 +18,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-	/*	CRUD a = new CRUD();
+		CRUD a = new CRUD();
 		Joueur J = new Joueur("Karim");
 		try {
 			a.connection();
@@ -26,6 +26,16 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			a.ancienscoreAbalone(J);
+			System.out.println(a.ancienScoreDameChinoise(J));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*
 		try {
 			a.ajouter_Joueur(J);
 		} catch (SQLException e) {
@@ -95,6 +105,7 @@ public class Main {
 		board.ajout_pions_haut_original();
 		
 		// board.lister_pions();
+		
 		
 	
 		
