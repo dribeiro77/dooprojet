@@ -2,17 +2,13 @@ package domaine;
 import java.lang.Math;
 
 /**
- * Created by Radu et karim on 09/06/17.
+ * Created by Radu on 09/06/17.
  */
-
 public class PlateauAbalone extends Plateau {
     private int baseHex; // Nombre de cases d'un côté du plateau hexagonal
     private int nbCases; // Nombre total de cases du plateau
 
     /* GETTERS */
-    
-    
-  
     public int getBaseHex() {
         return baseHex;
     }
@@ -116,7 +112,7 @@ public class PlateauAbalone extends Plateau {
                 if (j<baseHex-1) plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j)]);
                 else
                     // Si cette ligne est décommentée, seules les cases de 0 à 25 seront initalisées
-                    // if (i + baseHex + zigzag(j) - 1 < baseHex)
+                     if (i + baseHex + zigzag(j) - 1 < nbCases)
                     {
                         plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j) - 1]);
                     }
@@ -135,6 +131,6 @@ public class PlateauAbalone extends Plateau {
             if (plateau[i].getGauche() != null)      { System.out.println("    " + i + ".G :  " + plateau[i].getGauche().getId()); }
             if (plateau[i].getHaut_gauche() != null) { System.out.println("    " + i + ".HG : " + plateau[i].getHaut_gauche().getId()); }
         }
-        plateau[35].setHaut_gauche(plateau[26]);
+        plateau[35].setHaut_gauche(plateau[26]); // Glitch du plateau
     }
 }
