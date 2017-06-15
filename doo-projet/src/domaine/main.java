@@ -10,7 +10,7 @@ public class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		/**
+		
 		Partie part = new Partie();
 		part.setPlateau(new PlateauDamesChinoises());
 		ArrayList<Joueur> joueurs = new ArrayList();
@@ -24,7 +24,7 @@ public class main {
 		contr.init_partie();
 		
 		JoueDamesChinoisesUI joui = new JoueDamesChinoisesUI(contr);
-		**/
+		
 		
 		ChoixPartieUI start= new ChoixPartieUI();
 
