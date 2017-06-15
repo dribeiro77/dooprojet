@@ -27,6 +27,7 @@ public class main {
 		**/
 		
 		ChoixPartieUI start= new ChoixPartieUI();
+
 		
 	}
 

@@ -17,9 +17,7 @@ public class PlateauAbalone extends Plateau {
         return baseHex;
     }
 
-    public int getNbCases() {
-        return nbCases;
-    }
+   
 
     /* SETTERS */
     public void setBaseHex(int baseHex) {
@@ -32,16 +30,20 @@ public class PlateauAbalone extends Plateau {
         this.baseHex = baseHex; // Habituellement : 5
         calculerNbCases();
         System.out.println("Base hexagone : " + getBaseHex() + " => nombre de cases du plateau : " + getNbCases());
-        initPlateau();
-    }
+        
+    	this.setNbCases(this.calculerNbCases());   
+    	this.setPlateau(initPlateau());
+    	}
     
     /* AUTRES METHODES */
-    private void calculerNbCases() {
+    private int calculerNbCases() {
         nbCases = 0;
         for (int i = 0; i < baseHex - 1; i++) {
             nbCases += 2 * (baseHex + i);
         }
         nbCases += 2 * (baseHex - 1) + 1;
+        
+        return nbCases;
     }
 
     int zigzag(int entier) { // zigzag(n) = somme(k = 1..n, (-1)^ent((k - 1)/4))
@@ -53,9 +55,10 @@ public class PlateauAbalone extends Plateau {
         return res;
     }
 
-    public void initPlateau() {
+    public Case[] initPlateau() {
         Case[] plateau = new Case[getNbCases()];
-
+        System.out.println(nbCases);
+        
         for (int i = 0; i < nbCases; i++) { // Impossible de combiner les deux boucles
             plateau[i] = new Case(i);
         }
@@ -116,11 +119,12 @@ public class PlateauAbalone extends Plateau {
                 if (j<baseHex-1) plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j)]);
                 else
                     // Si cette ligne est décommentée, seules les cases de 0 à 25 seront initalisées
-                    // if (i + baseHex + zigzag(j) - 1 < baseHex)
+                    if (i + baseHex + zigzag(j) - 1 < nbCases)
                     {
                         plateau[i].setBas_gauche(plateau[i + baseHex + zigzag(j) - 1]);
                     }
 
+                
                 if (plateau[i].getBas_gauche()!= null ) {
                     if (plateau[i].getBas_gauche().getId() == t + baseHex + zigzag(j) - 1) {
                         plateau[i].setBas_gauche(null) ;
@@ -128,13 +132,14 @@ public class PlateauAbalone extends Plateau {
                 }
             }
 
-            if (plateau[i].getHaut_droite() != null) { System.out.println("    " + i + ".HD : " + plateau[i].getHaut_droite().getId()); }
-            if (plateau[i].getDroite() != null)      { System.out.println("    " + i + ".D :  " + plateau[i].getDroite().getId()); }
-            if (plateau[i].getBas_droite() != null)  { System.out.println("    " + i + ".BD : " + plateau[i].getBas_droite().getId()); }
-            if (plateau[i].getBas_gauche() != null)  { System.out.println("    " + i + ".BG : " + plateau[i].getBas_gauche().getId()); }
-            if (plateau[i].getGauche() != null)      { System.out.println("    " + i + ".G :  " + plateau[i].getGauche().getId()); }
-            if (plateau[i].getHaut_gauche() != null) { System.out.println("    " + i + ".HG : " + plateau[i].getHaut_gauche().getId()); }
+           // if (plateau[i].getHaut_droite() != null) { System.out.println("    " + i + ".HD : " + plateau[i].getHaut_droite().getId()); }
+           // if (plateau[i].getDroite() != null)      { System.out.println("    " + i + ".D :  " + plateau[i].getDroite().getId()); }
+           // if (plateau[i].getBas_droite() != null)  { System.out.println("    " + i + ".BD : " + plateau[i].getBas_droite().getId()); }
+           // if (plateau[i].getBas_gauche() != null)  { System.out.println("    " + i + ".BG : " + plateau[i].getBas_gauche().getId()); }
+           //if (plateau[i].getGauche() != null)      { System.out.println("    " + i + ".G :  " + plateau[i].getGauche().getId()); }
+           //if (plateau[i].getHaut_gauche() != null) { System.out.println("    " + i + ".HG : " + plateau[i].getHaut_gauche().getId()); }
         }
         plateau[35].setHaut_gauche(plateau[26]);
+        return plateau ;
     }
 }

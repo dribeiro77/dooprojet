@@ -18,6 +18,7 @@ public class JoueDamesChinoisesController {
 	 * Ajoute les pions en fonction de la partie choisie
 	 */
 	public void init_partie(){
+		
 		switch (partie.getJoueurs().size()) {
 			case 1:
 				((PlateauDamesChinoises)partie.getPlateau()).init_triangleBas();
@@ -73,7 +74,7 @@ public class JoueDamesChinoisesController {
 	}
 	
 	/**
-	 * Effectue le déplacement simple d'un pion entre deux cases
+	 * Effectue le dï¿½placement simple d'un pion entre deux cases
 	 * @param avant
 	 * @param apres
 	 */
@@ -87,6 +88,7 @@ public class JoueDamesChinoisesController {
 	 * @param saute
 	 * @param mangee
 	 */
+	
 	public void sautePion(Case saute, Case aterit){
 			aterit.setPion(saute.getPion());
 			saute.setPion(null);
@@ -98,11 +100,14 @@ public class JoueDamesChinoisesController {
 	 * @param n
 	 * @return
 	 */
+	
 	public ArrayList<Case> mouvements_possibles(Case n){
 		ArrayList<Case> list1 = partie.getPlateau().deplacements_simples(n);
 		list1.addAll(((PlateauDamesChinoises)partie.getPlateau()).sauts_disponibles(n));
 		return list1;
+		
 	}
+	
 	
 	public Partie getPartie() {
 		return partie;
@@ -112,8 +117,9 @@ public class JoueDamesChinoisesController {
 		this.partie = partie;
 	}
 
+
 	/**
-	 * Vérifie si la partie est finie
+	 * Vï¿½rifie si la partie est finie
 	 * 
 	 * @return
 	 */

@@ -83,4 +83,30 @@ public class Main {
 		
 		*/
 		PlateauAbalone board = new PlateauAbalone(5);
+		//board.print();
+		
+		for (int i = 0 ; i< board.getNbCases();i++)
+		{
+		board.afficher_voisins_console(board.getPlateau()[i]);
+		System.out.println("");
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }}

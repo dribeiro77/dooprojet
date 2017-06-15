@@ -8,6 +8,7 @@ public class PlateauDamesChinoises extends Plateau{
 	public PlateauDamesChinoises(){
 		super(); 		
 		this.setPlateau(init_plateau());
+		this.setNbCases(121);
 	}
 	
 	/**
@@ -347,7 +348,7 @@ public class PlateauDamesChinoises extends Plateau{
 	}
 	
 	/**
-	 * Donne la liste de Cases où le pion peut sauter à partir de sa case
+	 * Donne la liste de Cases oï¿½ le pion peut sauter ï¿½ partir de sa case
 	 * @param n
 	 * @return
 	 */
@@ -355,14 +356,14 @@ public class PlateauDamesChinoises extends Plateau{
 	    
 		ArrayList<Case> res = new ArrayList();
 
-	    //saut à droite
+	    //saut ï¿½ droite
 	    if (n.getDroite() != null && n.getDroite().getPion()!=null){
 	        if (n.getDroite().getDroite() != null && n.getDroite().getDroite().getPion() == null){
 	            res.add(n.getDroite().getDroite());
 	        }
 	    }
 
-	    //saut à gauche
+	    //saut ï¿½ gauche
 	    if (n.getGauche() != null  && n.getGauche().getPion()!=null){
 	        if (n.getGauche().getGauche() != null && n.getGauche().getGauche().getPion() == null){
 	            res.add(n.getGauche().getGauche());
@@ -476,7 +477,7 @@ public class PlateauDamesChinoises extends Plateau{
 	}
 	
 	/**
-	 * Vérifie si touts les pions adverses ont atteint le triangle du haut
+	 * Vï¿½rifie si touts les pions adverses ont atteint le triangle du haut
 	 * @return
 	 */
 	public boolean triangleHautConquis(){
@@ -504,7 +505,7 @@ public class PlateauDamesChinoises extends Plateau{
 	}
 	
 	/**
-	 * Verifie si touts les pions ont atteint le triangle haut à droit 
+	 * Verifie si touts les pions ont atteint le triangle haut ï¿½ droit 
 	 * @return
 	 */
 	public boolean triangleDoiteHautConquis(){
@@ -573,7 +574,7 @@ public boolean triangleDoiteBasConquis(){
 	}
 
 /**
- * verifie si tous les pions ont atteint le triangle d'en haut à gauche 
+ * verifie si tous les pions ont atteint le triangle d'en haut ï¿½ gauche 
  * @return
  */
 public boolean triangleGaucheHautConquis(){
@@ -609,7 +610,7 @@ public boolean triangleGaucheHautConquis(){
 }
 
 /**
- * verifie si tous les pions ont atteint le triangle en bas à gauche
+ * verifie si tous les pions ont atteint le triangle en bas ï¿½ gauche
  * @return
  */
 public boolean triangleGaucheBasConquis(){

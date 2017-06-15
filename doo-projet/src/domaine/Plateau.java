@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public abstract class Plateau {
 	private Case[] plateau;
+	private int nbCases ;
 	
 	public Plateau(){
+		
 	}
 	
 	public void print(){
-		for(int i=0; i<=121 ; i++){
+		for(int i=0; i<nbCases ; i++){
 			this.afficher_voisins_console(plateau[i]);
 		}
 	}
@@ -132,4 +134,13 @@ public abstract class Plateau {
 		return false;
 	}
 
+	public int getNbCases() {
+		return nbCases;
+	}
+
+	public void setNbCases(int nbCases) {
+		this.nbCases = nbCases;
+	}
+
+	
 }
