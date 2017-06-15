@@ -4,6 +4,7 @@ import java.lang.Math;
 /**
  * Created by Radu et karim on 09/06/17.
  */
+
 public class PlateauAbalone extends Plateau {
     private int baseHex; // Nombre de cases d'un côté du plateau hexagonal
     private int nbCases; // Nombre total de cases du plateau
