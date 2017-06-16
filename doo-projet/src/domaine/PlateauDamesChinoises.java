@@ -355,6 +355,20 @@ public class PlateauDamesChinoises extends Plateau{
 	public ArrayList<Case> sauts_disponibles(Case n){
 	    
 		ArrayList<Case> res = new ArrayList();
+		
+		 //saut bas gauche
+	    if (n.getBas_gauche() != null  && n.getBas_gauche().getPion()!=null){
+	        if (n.getBas_gauche().getBas_gauche() != null && n.getBas_gauche().getBas_gauche().getPion() == null){
+	            res.add(n.getBas_gauche().getBas_gauche());
+	        }
+	    }
+	    
+	    //saut bas droite
+	    if (n.getBas_droite() != null  && n.getBas_droite().getPion()!=null){
+	        if (n.getBas_droite().getBas_droite() != null && n.getBas_droite().getBas_droite().getPion() == null){
+	            res.add(n.getBas_droite().getBas_droite());
+	        }
+	    }
 
 	    //saut � droite
 	    if (n.getDroite() != null && n.getDroite().getPion()!=null){
@@ -382,21 +396,7 @@ public class PlateauDamesChinoises extends Plateau{
 	        if (n.getHaut_gauche().getHaut_gauche() != null && n.getHaut_gauche().getHaut_gauche().getPion() == null){
 	            res.add(n.getHaut_gauche().getHaut_gauche());
 	        }
-	    }
-
-	    //saut bas droite
-	    if (n.getBas_droite() != null  && n.getBas_droite().getPion()!=null){
-	        if (n.getBas_droite().getBas_droite() != null && n.getBas_droite().getBas_droite().getPion() == null){
-	            res.add(n.getBas_droite().getBas_droite());
-	        }
-	    }
-
-	    //saut bas gauche
-	    if (n.getBas_gauche() != null  && n.getBas_gauche().getPion()!=null){
-	        if (n.getBas_gauche().getBas_gauche() != null && n.getBas_gauche().getBas_gauche().getPion() == null){
-	            res.add(n.getBas_gauche().getBas_gauche());
-	        }
-	    }
+	    } 
 
 	    return res;
 

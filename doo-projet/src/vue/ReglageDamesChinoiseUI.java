@@ -127,6 +127,7 @@ public class ReglageDamesChinoiseUI extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 control.choixJeu("Dames Chinoises");
                 if (control.lancePartie() && control.choixCouleurParJoueur(comboBox.getSelectedIndex()+1)) {
+                	control.getPartie().setMode((String)comboBoxModes.getSelectedItem());
                     dispose();
                     JoueDamesChinoisesController joue = new JoueDamesChinoisesController(control.getPartie());
                     JoueDamesChinoisesUI ui = new JoueDamesChinoisesUI(joue);

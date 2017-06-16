@@ -105,5 +105,29 @@ public void setCases(Case cases) {
     }
     return shape.contains(x, y);
   }
+  
+  public String getStringColor(){
+	  if (cases.getPion()!=null){
+		  if (this.getCases().getPion().getCouleur()==Color.BLUE){
+			  return "BLUE";
+		  }
+		  else if (this.getCases().getPion().getCouleur()==Color.RED){
+			  return "RED";
+		  }
+		  else if (this.getCases().getPion().getCouleur()==Color.MAGENTA){
+			  return "MAGENTA";
+		  }
+		  else if (this.getCases().getPion().getCouleur()==Color.YELLOW){
+			  return "YELLOW";
+		  }
+		  else if (this.getCases().getPion().getCouleur()==Color.GREEN){
+			  return "GREEN";
+		  }
+		  else {
+			  return "BLACK";
+		  }
+	  }
+	  else return "";
+  }
 
 }
