@@ -6,7 +6,7 @@ import controller.JoueDamesChinoisesController;
 import vue.ChoixPartieUI;
 import vue.JoueDamesChinoisesUI;
 
-public class main {
+class main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
