@@ -24,21 +24,26 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
         setLocationRelativeTo(null);
         draw();
         this.revalidate();
-        if (cases==null){
-            System.out.println("case=null");
-        }
+
 
     }
 
     public void draw() {
 
-        PlateauAbalone plateau = (PlateauAbalone) control.getPartie().getPlateau();
-        for(int i=1; i<=61; i++){
+        PlateauAbalone plateau = new PlateauAbalone(5);
+        /*
+        if (plateau == null){
+            System.out.println("plateau null");
+        }
+        else System.out.println("plateau not null");
+        */
+        System.out.println(plateau.getPlateau());
+        for(int i=0; i<=60; i++){
             cases[i]= new RoundButton(plateau.getPlateau()[i]);
-
+            //System.out.println("case"+i);
         }
 
-        this.setLayout(new GridLayout(10, 3));
+        this.setLayout(new GridLayout(17, 3));
 
         //En-tête :
         JPanel header = new JPanel();
@@ -66,17 +71,43 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
         this.add(header, BorderLayout.EAST);
 
 
-        //JPanel one = new JPanel();
+        JPanel one = new JPanel();
+        one.setBackground(new Color(33,133,86));
+        this.add(one);
 
-        addBetween(1, 5);
-        addBetween(6, 11);
-        addBetween(12, 18);
-        addBetween(19, 26);
-        addBetween(27, 35);
-        addBetween(36, 43);
-        addBetween(44, 50);
-        addBetween(51, 56);
-        addBetween(57, 61);
+        JPanel two = new JPanel();
+        two.setBackground(new Color(33,133,86));
+        this.add(two);
+
+        addBetween(0, 4);
+        addBetween(5, 10);
+        addBetween(11, 17);
+        addBetween(18, 25);
+        addBetween(26, 34);
+        addBetween(35, 42);
+        addBetween(43, 49);
+        addBetween(50, 55);
+        addBetween(56, 60);
+
+        JPanel tree = new JPanel();
+        tree.setBackground(new Color(33,133,86));
+        this.add(tree);
+
+        JPanel four = new JPanel();
+        four.setBackground(new Color(33,133,86));
+        this.add(four);
+
+        JPanel five = new JPanel();
+        five.setBackground(new Color(33,133,86));
+        this.add(five);
+
+        JPanel six = new JPanel();
+        six.setBackground(new Color(33,133,86));
+        this.add(six);
+
+        JPanel seven = new JPanel();
+        seven.setBackground(new Color(33,133,86));
+        this.add(seven);
 
         this.setVisible(true);
     }
