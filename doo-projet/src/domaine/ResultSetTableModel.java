@@ -1,3 +1,4 @@
+/*
 package domaine;
 
 import java.sql.ResultSet;
@@ -75,3 +76,5 @@ public class ResultSetTableModel extends AbstractTableModel {
 	  
 
 }
+
+*/

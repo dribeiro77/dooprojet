@@ -45,7 +45,7 @@ public class PlateauAbalone extends Plateau {
             nbCases += 2 * (baseHex + i);
         }
         nbCases += 2 * (baseHex - 1) + 1;
-        
+        System.out.println(nbCases);
         return nbCases;
     }
 
