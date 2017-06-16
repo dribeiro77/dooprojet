@@ -13,8 +13,12 @@ import java.util.Arrays;
 import javax.swing.*;
 
 import controller.ChoixPartieController;
+import controller.JoueAbaloneController;
 import controller.JoueDamesChinoisesController;
 import domaine.Joueur;
+
+import static javafx.scene.input.KeyCode.J;
+
 /**
  * Created by Vicnesh on 2017-06-09.
  */
@@ -116,7 +120,8 @@ public class ReglageAbaloneUI extends JFrame implements ActionListener {
             control.choixJeu("Abalone");
             if(control.lancePartie()){
                 dispose();
-                //JoueAbalone
+                JoueAbaloneController play = new JoueAbaloneController(control.getPartie());
+                JoueAbaloneUI ui_A = new JoueAbaloneUI(play);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ne peut pas lancer la partie", "Erreur", JOptionPane.ERROR_MESSAGE);
