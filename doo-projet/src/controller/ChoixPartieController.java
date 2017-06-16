@@ -2,6 +2,7 @@ package controller;
 
 import domaine.Joueur;
 import domaine.Partie;
+import domaine.PlateauAbalone;
 import domaine.PlateauDamesChinoises;
 
 public class ChoixPartieController {
@@ -12,7 +13,7 @@ public class ChoixPartieController {
 	}
 	
 	/**
-	 * ajoute un joueur à la partie
+	 * ajoute un joueur ï¿½ la partie
 	 * @param pseudo
 	 * @return
 	 */
@@ -91,7 +92,7 @@ public class ChoixPartieController {
 	}
 	
 	/**
-	 * vérifie si la partie peut être lancée, crée le plateau
+	 * vï¿½rifie si la partie peut ï¿½tre lancï¿½e, crï¿½e le plateau
 	 * @return
 	 */
 	public boolean lancePartie(){
@@ -100,10 +101,12 @@ public class ChoixPartieController {
 				partie.setPlateau(new PlateauDamesChinoises());
 				return true;
 			}
-			
-			//ABALONE
+
+			else if (partie.getJeu().equalsIgnoreCase("Abalone")){
+				partie.setPlateau(new PlateauAbalone(5));
+				return true;
+			}
 			return true;
-			
 		}
 		else return false;
 	}
@@ -115,6 +118,7 @@ public class ChoixPartieController {
 	public void setPartie(Partie partie) {
 		this.partie = partie;
 	}
-	
-	
+
+
+
 }

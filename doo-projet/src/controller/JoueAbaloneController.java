@@ -19,12 +19,13 @@ public class JoueAbaloneController {
 	 * Ajoute les pions en fonction de la partie choisie
 	 */
 	public void init_partie() {
+
 		if (partie.getMode() == "Classique") {
 			((PlateauAbalone) partie.getPlateau()).ajout_pions_bas_classique();
 			((PlateauAbalone) partie.getPlateau()).ajout_pions_haut_classique();
-		} else if (partie.getMode() == "Version 2")
-		{
+		}
 
+		else if (partie.getMode() == "Version 2") {
 			((PlateauAbalone) partie.getPlateau()).ajout_pions_bas_original();
 			((PlateauAbalone) partie.getPlateau()).ajout_pions_haut_original();
 		}
