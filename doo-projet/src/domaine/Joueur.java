@@ -24,7 +24,9 @@ public class Joueur {
 		this.score = score;
 	}
 	
-	
+	public void addScore(int sc){
+		score += sc;
+	}
 	
 	
 

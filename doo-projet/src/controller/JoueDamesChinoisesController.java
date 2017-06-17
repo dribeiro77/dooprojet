@@ -168,6 +168,10 @@ public class JoueDamesChinoisesController {
 		
 	}
 	
+	public void sumScore(int i,int sc){
+		partie.getJoueurs().get(i).addScore(sc);
+	}
+	
 	public ArrayList<Case> sauts_possibles(Case n){
 		return ((PlateauDamesChinoises)partie.getPlateau()).sauts_disponibles(n);
 	}

@@ -143,6 +143,9 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource().getClass().equals(JButton.class)){
+        	for (int i = 0; i < control.getPartie().getJoueurs().size(); i++) {
+				System.out.println(control.getPartie().getJoueurs().get(i).getScore());
+			}
             dispose();
         }
         
@@ -220,13 +223,16 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
             if(control.getPartie().getPlateau().estVoisin(((RoundButton)e.getSource()).getCases(),((RoundButton)selected.getSource()).getCases())){
                 control.deplacementSimple(((RoundButton)selected.getSource()).getCases(), ((RoundButton)e.getSource()).getCases());
                 repaint();
+                control.sumScore(turn%control.getPartie().getJoueurs().size(),1);
                 turn++;
             }
             else {
                 control.sautePion(((RoundButton)selected.getSource()).getCases(), ((RoundButton)e.getSource()).getCases());
+                control.sumScore(turn%control.getPartie().getJoueurs().size(),3);
                 if(control.sauts_possibles(((RoundButton)e.getSource()).getCases()).size()>1){
                     colloreSauts(e);
                     repaint();
+                    control.sumScore(turn%control.getPartie().getJoueurs().size(),2);
                 }
                 else{
                 	turn++;
