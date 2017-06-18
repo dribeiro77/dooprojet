@@ -1,9 +1,9 @@
 package controller;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import domaine.Joueur;
-import domaine.Partie;
-import domaine.PlateauAbalone;
-import domaine.PlateauDamesChinoises;
+import domaine.*;
+
 
 public class ChoixPartieController {
 	private Partie partie;
@@ -90,6 +90,51 @@ public class ChoixPartieController {
 	public void choixJeu(String str){
 		partie.setJeu(str);
 	}
+	
+	
+	/**
+	 * Meilleurs scores Abalone
+	 */
+	public ResultSetTableModel ClassementAbalone(){
+			DALJoueur dal = new CRUD();
+			ResultSet rs = null;
+			try {
+				dal.connection();
+				rs = dal.lister_joueur_abalone(); //dal: data acces layer
+			} catch (ClassNotFoundException | SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			ResultSetTableModel model = new ResultSetTableModel( rs );
+		  
+			
+			return model ;
+		  
+	}
+	
+	
+	/**
+	 * Meilleurs scores Dames Chinoises
+	 */
+	public ResultSetTableModel ClassementDamesChinoises(){
+		DALJoueur dal = new CRUD();
+		ResultSet rs = null;
+		try {
+			dal.connection();
+			rs = dal.lister_joueur_dames_chinoise(); //dal: data acces layer
+		} catch (ClassNotFoundException | SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		ResultSetTableModel model = new ResultSetTableModel( rs );
+	  
+		
+		return model ;
+	  
+	}
+	
 	
 	/**
 	 * v�rifie si la partie peut �tre lanc�e, cr�e le plateau

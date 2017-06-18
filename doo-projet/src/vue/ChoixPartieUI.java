@@ -10,6 +10,7 @@ import javax.swing.*;
 import controller.ChoixPartieController;
 import controller.JoueDamesChinoisesController;
 import domaine.Joueur;
+import domaine.ResultSetTableModel;
 
 public class ChoixPartieUI extends JFrame implements ActionListener{
 	private ChoixPartieController control;
@@ -94,9 +95,12 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 		JButton classement_DM = new JButton( new AbstractAction("Classement") {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
-				control.choixJeu("Dames Chinoise");
-				dispose();
-				//Addichage classement Dames Chinoises
+				
+				ResultSetTableModel model =control.ClassementDamesChinoises();
+				
+					dispose();
+					Classement cl1 = new Classement( model);
+					
 			}
 		});
 		flow.add(classement_DM);
@@ -160,11 +164,14 @@ public class ChoixPartieUI extends JFrame implements ActionListener{
 		JButton classement_A = new JButton( new AbstractAction("Classement") {
 			@Override
 			public void actionPerformed( ActionEvent e ) {
-				control.choixJeu("Dames Chinoise");
-
-				dispose();
-				//Affichage classement abalone
+				
+				ResultSetTableModel model =control.ClassementAbalone();
+				
+					dispose();
+					Classement cl1 = new Classement( model);
+					
 			}
+				
 		});
 		flow.add(classement_A);
 		flow.setBackground(Color.lightGray);

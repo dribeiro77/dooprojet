@@ -13,7 +13,7 @@ import domaine.PlateauAbalone;
 import domaine.PlateauDamesChinoises;
 
 public class JoueAbaloneUI extends JFrame implements ActionListener  {
-    private JoueAbaloneController control;
+	private JoueAbaloneController control;
     RoundButton cases[] = new RoundButton[61];
     RoundButton selected = new RoundButton(new Case(0));
 

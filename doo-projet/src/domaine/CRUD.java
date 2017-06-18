@@ -23,6 +23,7 @@ public class CRUD implements DALJoueur{
 		      Class.forName("com.mysql.jdbc.Driver");
 
 		      /*Ouvrir une connection */
+		      
 		      conn = DriverManager.getConnection(DB_URL,USER,PASS);
 		      System.out.println("Connection à la BD ...");
 
@@ -78,12 +79,11 @@ public class CRUD implements DALJoueur{
 	@Override
 	public ResultSet lister_joueur_abalone() throws SQLException {
 		// TODO Auto-generated method stub
+		
 		  stmt = conn.createStatement();
 	      String sql;
 	      sql = "SELECT Login, Score  FROM JOUEUR WHERE Score > 0 ORDER BY Score ";
 	      ResultSet rs = stmt.executeQuery(sql);
-
-	     
 		return rs;
 	}
 
