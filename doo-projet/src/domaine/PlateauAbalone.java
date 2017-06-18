@@ -30,6 +30,8 @@ public class PlateauAbalone extends Plateau {
         super();
         this.baseHex = baseHex; // Habituellement : 5
         calculerNbCases();
+        
+        
         this.setNbCases(this.calculerNbCases());
         this.setPlateau(initPlateau());
     }

@@ -129,14 +129,32 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
         this.add(one);
     }
 
+    public void colloreMouvementsPossibles(ActionEvent e){
+   	 //collore mouvements possibles
+       if (((RoundButton)e.getSource()).getCases().getPion()!=null){
+           ArrayList<Case> res = control.mouvements_possibles(((RoundButton)e.getSource()).getCases());
+           for (int i = 0; i < res.size(); i++) {
+               cases[res.get(i).getId()].setBackground(Color.PINK);
+           }
+       }
+   }
+   
+   public void decolloreMouvementsPossibles(ActionEvent e){
+   	if (((RoundButton)e.getSource()).getCases().getPion()!=null){
+           ArrayList<Case> res = control.mouvements_possibles(((RoundButton)e.getSource()).getCases());
+           for (int i = 0; i < res.size(); i++) {
+               cases[res.get(i).getId()].setBackground(Color.white);
+           }
+       }
+   }
     /**
      * Actions quand on clique sur une case
      */
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    }
-     /*   if(e.getSource().getClass().equals(JButton.class)){
+   
+        if(e.getSource().getClass().equals(JButton.class)){
             dispose();
         }
         else{
@@ -191,4 +209,5 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
             }
         }
     }*/
-}
+        }
+}}

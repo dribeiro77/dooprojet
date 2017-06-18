@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -34,8 +35,17 @@ class main {
 		**/
 		
 		ChoixPartieUI start= new ChoixPartieUI();
-
+/*
+		PlateauAbalone p = new PlateauAbalone(5);
+		p.printPlateau();
 		
+		p.ajout_pions_bas_classique();
+		p.ajout_pions_haut_classique();
+		p.printPlateau();
+	
+		ArrayList<Case> a = p.deplacements_simples_possibles(p.getPlateau()[13]);
+		Iterator<Case> itr = a.iterator();
+		System.out.println(a.size());
+		*/
 	}
-
 }
