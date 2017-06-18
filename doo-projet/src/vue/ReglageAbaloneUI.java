@@ -17,7 +17,7 @@ import controller.JoueAbaloneController;
 import controller.JoueDamesChinoisesController;
 import domaine.Joueur;
 
-import static javafx.scene.input.KeyCode.J;
+//import  javafx.scene.input.KeyCode.J;
 
 /**
  * Created by Vicnesh on 2017-06-09.
@@ -119,7 +119,9 @@ public class ReglageAbaloneUI extends JFrame implements ActionListener {
         public void actionPerformed( ActionEvent e ) {
             control.choixJeu("Abalone");
             if(control.lancePartie()){
+            	control.getPartie().setMode((String)comboBoxModesAba.getSelectedItem());
                 dispose();
+            //    System.out.println(comboBoxModesAba.getSelectedItem());
                 JoueAbaloneController play = new JoueAbaloneController(control.getPartie());
                 JoueAbaloneUI ui_A = new JoueAbaloneUI(play);
             }

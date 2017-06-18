@@ -132,25 +132,27 @@ public class PlateauAbalone extends Plateau {
             System.out.println("");
         }
 */
+       
         return plateau ;
     }
 
     public void ajout_pions_haut_classique(){ // Ajout des pions en haut du plateau
 
         for(int i=0; i<=15 ; i++){
-            if (i != 11 && i !=12)
+            if ((i != 11) && (i !=12))
                 this.getPlateau()[i].setPion(new Pion(Color.RED));
+            	
         }
     }
     public void ajout_pions_haut_original(){
 
         for(int i=0; i<17 ; i++){
-            if (i != 1 && i !=1 && i!=5 && i!=10 && i!=11)
+            if ( i !=0 && i!=4 && i!=5 && i!=10 && i!=11)
                 this.getPlateau()[i].setPion(new Pion(Color.RED));
 
         }
-        this.getPlateau()[22].setPion(new Pion(Color.BLACK));
-        this.getPlateau()[21].setPion(new Pion(Color.BLACK));
+        this.getPlateau()[22].setPion(new Pion(Color.RED));
+        this.getPlateau()[21].setPion(new Pion(Color.RED));
 
     }
 
@@ -165,7 +167,7 @@ public class PlateauAbalone extends Plateau {
     public void ajout_pions_bas_original(){
 
         for(int i=60; i> 43 ; i--){
-            if(i!= 60 && i!=50 && i!=56 && i!=55 )
+            if(i!= 60 && i!=50 && i!=56 && i!=55 && i!=49 )
                 this.getPlateau()[i].setPion(new Pion(Color.BLACK));
         }
         this.getPlateau()[38].setPion(new Pion(Color.BLACK));

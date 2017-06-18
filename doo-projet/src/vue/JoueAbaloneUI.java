@@ -10,6 +10,7 @@ import javax.swing.*;
 import controller.JoueAbaloneController;
 import domaine.Case;
 import domaine.PlateauAbalone;
+import domaine.PlateauDamesChinoises;
 
 public class JoueAbaloneUI extends JFrame implements ActionListener  {
     private JoueAbaloneController control;
@@ -30,14 +31,15 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
 
     public void draw() {
 
-        PlateauAbalone plateau = new PlateauAbalone(5);
+ 
+    PlateauAbalone plateau = (PlateauAbalone) control.getPartie().getPlateau();
         /*
         if (plateau == null){
             System.out.println("plateau null");
         }
         else System.out.println("plateau not null");
         */
-        System.out.println(plateau.getPlateau());
+      
         for(int i=0; i<=60; i++){
             cases[i]= new RoundButton(plateau.getPlateau()[i]);
             //System.out.println("case"+i);
