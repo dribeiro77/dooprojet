@@ -5,13 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import controller.JoueDamesChinoisesController;
+import domaine.CRUD;
 import domaine.Case;
+import domaine.DALJoueur;
+import domaine.Joueur;
 import domaine.PlateauDamesChinoises;
 import controller.ChoixPartieController;
 
@@ -54,6 +58,8 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 
                 dispose();
                 //ReglageDamesChinoiseUI back = new ReglageDamesChinoiseUI();
+           	 control. Sauvegarde();
+                
                 ChoixPartieUI menu = new ChoixPartieUI();
             }
         });
@@ -66,7 +72,15 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
         tete.setBackground(new Color(33,133,86));
         add(tete);
 
-        JButton quit = new JButton("Quitter");
+        JButton quit = new JButton(new AbstractAction("Quitter") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               
+           	 control. Sauvegarde();
+                
+               
+            }
+        });
         quit.addActionListener(this);
         tete.add(quit, BorderLayout.EAST);
         this.add(tete, BorderLayout.EAST);
@@ -136,15 +150,21 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
         pan++;
     }
 
+    
+    
     /**
      * Actions quand on clique sur une case
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+    	
 
+    	
+    	
         if(e.getSource().getClass().equals(JButton.class)){
-        	for (int i = 0; i < control.getPartie().getJoueurs().size(); i++) {
-				System.out.println(control.getPartie().getJoueurs().get(i).getScore());
+        	
+        	for (int j = 0; j < control.getPartie().getJoueurs().size(); j++) {
+				System.out.println(control.getPartie().getJoueurs().get(j).getScore());
 			}
             dispose();
         }
@@ -160,6 +180,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
             
             if(control.getPartie().getMode().equalsIgnoreCase("Classique")){
             	jouerClassique(e);
+            	System.out.println(control.getPartie().getJoueurs().get(0).getPseudo());
 	        }
             else if(control.getPartie().getMode().equalsIgnoreCase("Avec prise")){
             	
@@ -168,11 +189,15 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
             	
             }
             
+            
             if(control.partie_finie()){
                 JOptionPane.showMessageDialog(this, "PARTIE FINIE!!");
+                control. Sauvegarde();
+               
                 dispose();
             }
         }
+    	
     }
    
     

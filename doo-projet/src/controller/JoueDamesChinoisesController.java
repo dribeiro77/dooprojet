@@ -1,9 +1,13 @@
 package controller;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import domaine.CRUD;
 import domaine.Case;
+import domaine.DALJoueur;
+import domaine.Joueur;
 import domaine.Partie;
 import domaine.PlateauDamesChinoises;
 
@@ -77,6 +81,7 @@ public class JoueDamesChinoisesController {
 	 */
 	public void init_partie(){
 		
+		
 		switch (partie.getJoueurs().size()) {
 			case 1:
 				((PlateauDamesChinoises)partie.getPlateau()).init_triangleBas();
@@ -129,6 +134,8 @@ public class JoueDamesChinoisesController {
 				((PlateauDamesChinoises)partie.getPlateau()).init_DroiteBas();
 				((PlateauDamesChinoises)partie.getPlateau()).init_GaucheHaut();				
 		}
+		
+		
 	}
 	
 	/**
@@ -297,6 +304,76 @@ public class JoueDamesChinoisesController {
 			}
 		}
 	}
+	
+	 /**
+     * Sauvegarde Score joueur 
+     */
+    
+    public void Sauvegarde()
+    {
+    	DALJoueur dal = new CRUD();
+        //connexion Bd
+         try {
+				dal.connection();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+         if (partie.getJoueurs().size()==1)
+         {
+        	 int nvscore ;
+        	 int anscore;
+        	 
+        	 try{
+        		 
+          	dal.ajouter_Joueur(partie.getJoueurs().get(0));
+          	anscore= dal.ancienScoreDameChinoise(partie.getJoueurs().get(0));
+          	nvscore=partie.getJoueurs().get(0).getScore();
+          	
+          	if (nvscore>anscore)
+          		
+          	dal.scoreDameChinoise(partie.getJoueurs().get(0), partie.getJoueurs().get(0).getScore());
+     		
+          } catch (SQLException e1) {
+     			// TODO Auto-generated catch block
+     			e1.printStackTrace();
+     		}
+         }
+         else
+         { 	 
+    	for (int i =0 ; i< partie.getJoueurs().size(); i++)
+     
+    	try {	
+    	int nvscore ;
+     	int anscore;
+     	
+     	dal.ajouter_Joueur(partie.getJoueurs().get(i));
+     	anscore= dal.ancienScoreDameChinoise(partie.getJoueurs().get(i));
+     	nvscore=partie.getJoueurs().get(1).getScore();
+     	
+     	if (nvscore>anscore)
+     		
+     	dal.scoreDameChinoise(partie.getJoueurs().get(i), partie.getJoueurs().get(i).getScore());
+		
+     } catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+
+    }
+     try {
+			dal.deconnexion();
+			System.out.println("Déconnexion");
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+     
+    }
 	
 	public void choixJeu(String str){
 		partie.setJeu(str);

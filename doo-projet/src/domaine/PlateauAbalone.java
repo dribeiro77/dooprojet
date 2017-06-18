@@ -136,6 +136,7 @@ public class PlateauAbalone extends Plateau {
         return plateau ;
     }
 
+    
     public void ajout_pions_haut_classique(){ // Ajout des pions en haut du plateau
 
         for(int i=0; i<=15 ; i++){
@@ -227,6 +228,7 @@ public class PlateauAbalone extends Plateau {
         }
     }
 
+    
     public void deplacementSimple(Case source, String direction) { // Pas de sumito
         Pion pion = source.getPion();
         Case destination = source;
@@ -326,6 +328,7 @@ public class PlateauAbalone extends Plateau {
 
     }
 
+    
 /*
     public void deplacement(ArrayList<Case> selection, String direction) { // Pas de sumito
         int indice = 0;
