@@ -329,6 +329,125 @@ public class PlateauAbalone extends Plateau {
         }
 
     }
+    
+ // liste des déplacement pour plusieurs pions
+ 	public ArrayList<Case> deplacements_multiples_possibles(ArrayList<Case> liste)
+ 	{
+ 		//liste triée
+ 		ArrayList<Case> res = new ArrayList();
+ 		//Ajout condition sumito ici
+ 		
+ 		
+ 		//liste des mvts possibles a droite
+ 		if(liste.size()==3) //Mvt gauche et droite sont valables que pour 3 pions
+ 		{ 			
+ 		if(liste.get(2).getDroite()!=null && liste.get(2).getDroite().getPion()==null)// ou summitoo
+ 			res.add(liste.get(2).getDroite());
+ 		//liste des mvts possibles à gauche
+ 		if(liste.get(0).getGauche()!=null && liste.get(0).getGauche().getPion()== null)
+ 			res.add(liste.get(0).getGauche());
+ 		
+ 		}
+ 		//liste des mvst possibles en haut a gauche
+ 		
+ 		if(liste.get(0).getHaut_droite()!=null && liste.get(0).getHaut_droite().getPion()==null)
+ 	 		{
+ 			if(liste.get(1).getHaut_droite()!=null && liste.get(1).getHaut_droite().getPion()==null)
+ 	 	 		// 3 Pions sélectionnées !!!
+ 	 			if(liste.size()==3)
+ 	 	 		{
+ 	 	 		if(liste.get(2).getHaut_droite()!=null && liste.get(2).getHaut_droite().getPion()==null)
+ 	 	 		{
+ 	 	 			res.add(liste.get(0).getHaut_droite());
+ 	 	 			res.add(liste.get(1).getHaut_droite());
+ 	 	 			res.add(liste.get(2).getHaut_droite());
+ 	 	 		}
+ 	 		}
+ 	 			// Deux pions sélectionnées
+ 	 			else
+ 	 			{
+ 	 				res.add(liste.get(0).getHaut_droite());
+ 	 	 			res.add(liste.get(1).getHaut_droite());
+ 	 			}
+ 	 	 		
+ 	 	 			
+ 	 		}
+ 	
+ 		//Liste des mvsts possible en haut à gauche
+ 		if(liste.get(0).getHaut_gauche()!=null && liste.get(0).getHaut_gauche().getPion()==null)
+	 		{
+			if(liste.get(1).getHaut_gauche()!=null && liste.get(1).getHaut_gauche().getPion()==null)
+	 	 		// 3 Pions sélectionnées !!!
+	 			if(liste.size()==3)
+	 	 		{
+	 	 		if(liste.get(2).getHaut_gauche()!=null && liste.get(2).getHaut_gauche().getPion()==null)
+	 	 		{
+	 	 			res.add(liste.get(0).getHaut_gauche());
+	 	 			res.add(liste.get(1).getHaut_gauche());
+	 	 			res.add(liste.get(2).getHaut_gauche());
+	 	 		}
+	 		}
+	 			// Deux pions sélectionnées
+	 			else
+	 			{
+	 				res.add(liste.get(0).getHaut_gauche());
+	 	 			res.add(liste.get(1).getHaut_gauche());
+	 			}
+			
+			//Liste des mvts possibles en bas à droite
+			if(liste.get(0).getBas_droite()!=null && liste.get(0).getBas_droite().getPion()==null)
+ 	 		{
+ 			if(liste.get(1).getBas_droite()!=null && liste.get(1).getBas_droite().getPion()==null)
+ 	 	 		// 3 Pions sélectionnées !!!
+ 	 			if(liste.size()==3)
+ 	 	 		{
+ 	 	 		if(liste.get(2).getBas_droite()!=null && liste.get(2).getBas_droite().getPion()==null)
+ 	 	 		{
+ 	 	 			res.add(liste.get(0).getBas_droite());
+ 	 	 			res.add(liste.get(1).getBas_droite());
+ 	 	 			res.add(liste.get(2).getBas_droite());
+ 	 	 		}
+ 	 		}
+ 	 			// Deux pions sélectionnées
+ 	 			else
+ 	 			{
+ 	 				res.add(liste.get(0).getBas_droite());
+ 	 	 			res.add(liste.get(1).getBas_droite());
+ 	 			}
+ 			
+ 			//Liste des mvts possibles en bas à gauche
+ 			if(liste.get(0).getBas_gauche()!=null && liste.get(0).getBas_gauche().getPion()==null)
+ 	 		{
+ 			if(liste.get(1).getBas_gauche()!=null && liste.get(1).getBas_gauche().getPion()==null)
+ 	 	 		// 3 Pions sélectionnées !!!
+ 	 			if(liste.size()==3)
+ 	 	 		{
+ 	 	 		if(liste.get(2).getBas_gauche()!=null && liste.get(2).getBas_gauche().getPion()==null)
+ 	 	 		{
+ 	 	 			res.add(liste.get(0).getBas_gauche());
+ 	 	 			res.add(liste.get(1).getBas_gauche());
+ 	 	 			res.add(liste.get(2).getBas_gauche());
+ 	 	 		}
+ 	 		}
+ 	 			// Deux pions sélectionnées
+ 	 			else
+ 	 			{
+ 	 				res.add(liste.get(0).getBas_gauche());
+ 	 	 			res.add(liste.get(1).getBas_gauche());
+ 	 			}
+ 	 	 		
+ 	 	 			
+ 	 		}
+ 	 	 			
+ 	 		}
+	 	 		
+	 	 			
+	 		}
+ 	 		
+ 		
+ 		return res;
+ 	}
+    
 
     
 /*

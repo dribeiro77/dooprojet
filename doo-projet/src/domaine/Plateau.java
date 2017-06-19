@@ -52,8 +52,10 @@ public abstract class Plateau {
 	/**
 	 * Retourne les cases voisines o� le pion peut se d�placer � partir de sa case
 	 * @param n
+	 * @return 
 	 * @return
 	 */
+	
 	
 	public ArrayList<Case> deplacements_simples_possibles(Case n){
 		
@@ -64,15 +66,14 @@ public abstract class Plateau {
 		if (n.getDroite() != null){
 	        if (n.getDroite().getPion() == null){
 	            res.add(n.getDroite());
-	            if(plateau.length==61)
-	            {
+	            if(plateau.length==61)//mouvement de 3 pions spéciphique à abalone
+	            {	
 	            if(n.getDroite().getDroite()!=null && n.getDroite().getDroite().getPion()==null)
 	            	{
 	            	res.add(n.getDroite().getDroite());
 	            	
 	            		if(n.getDroite().getDroite().getDroite()!=null &&n.getDroite().getDroite().getDroite().getPion()==null)
 	            			res.add(n.getDroite().getDroite().getDroite());
-	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
 	            		
 	            	}
 	        }
@@ -83,7 +84,7 @@ public abstract class Plateau {
 	    if (n.getGauche() != null){
 	        if (n.getGauche().getPion() == null){
 	            res.add(n.getGauche());
-	            if(plateau.length==61)
+	            if(plateau.length==61) //mouvement de 3 pions spéciphique à abalone
 	            {
 	            if(n.getGauche().getGauche()!=null && n.getGauche().getGauche().getPion()==null)
 	            	{
@@ -91,7 +92,6 @@ public abstract class Plateau {
 	            	
 	            		if(n.getGauche().getGauche().getGauche()!=null &&n.getGauche().getGauche().getGauche().getPion()==null)
 	            			res.add(n.getGauche().getGauche().getGauche());
-	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
 	            		
 	            	}
 	        }
@@ -102,7 +102,7 @@ public abstract class Plateau {
 	    if (n.getHaut_droite() != null){
 	    	if (n.getHaut_droite().getPion() == null){
 	            res.add(n.getHaut_droite());
-	            if(plateau.length==61)
+	            if(plateau.length==61)//mouvement de 3 pions spéciphique à abalone
 	            {
 	            if(n.getHaut_droite().getHaut_droite()!=null && n.getHaut_droite().getHaut_droite().getPion()==null)
 	            	{
@@ -110,7 +110,7 @@ public abstract class Plateau {
 	            	
 	            		if(n.getHaut_droite().getHaut_droite().getHaut_droite()!=null &&n.getHaut_droite().getHaut_droite().getHaut_droite().getPion()==null)
 	            			res.add(n.getHaut_droite().getHaut_droite().getHaut_droite());
-	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            	
 	            		
 	            	}
 	        }
@@ -121,7 +121,7 @@ public abstract class Plateau {
 	    if (n.getHaut_gauche() != null){
 	    	if (n.getHaut_gauche().getPion() == null){
 	            res.add(n.getHaut_gauche());
-	            if(plateau.length==61)
+	            if(plateau.length==61)//mouvement de 3 pions spéciphique à abalone
 	            {
 	            if(n.getHaut_gauche().getHaut_gauche()!=null && n.getHaut_gauche().getHaut_gauche().getPion()==null)
 	            	{
@@ -129,7 +129,7 @@ public abstract class Plateau {
 	            	
 	            		if(n.getHaut_gauche().getHaut_gauche().getHaut_gauche()!=null &&n.getHaut_gauche().getHaut_gauche().getHaut_gauche().getPion()==null)
 	            			res.add(n.getHaut_gauche().getHaut_gauche().getHaut_gauche());
-	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            	
 	            		
 	            	}
 	        }
@@ -140,7 +140,7 @@ public abstract class Plateau {
 	    if (n.getBas_droite() != null){
 	    	if (n.getBas_droite().getPion() == null){
 	            res.add(n.getBas_droite());
-	            if(plateau.length==61)
+	            if(plateau.length==61)//mouvement de 3 pions spéciphique à abalone
 	            {
 	            if(n.getBas_droite().getBas_droite()!=null && n.getBas_droite().getBas_droite().getPion()==null)
 	            	{
@@ -148,7 +148,7 @@ public abstract class Plateau {
 	            	
 	            		if(n.getBas_droite().getBas_droite().getBas_droite()!=null &&n.getBas_droite().getBas_droite().getBas_droite().getPion()==null)
 	            			res.add(n.getBas_droite().getBas_droite().getBas_droite());
-	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            	
 	            		
 	            	}
 	        }
@@ -159,7 +159,7 @@ public abstract class Plateau {
 	    if (n.getBas_gauche() != null){
 	    	if (n.getBas_gauche().getPion() == null){
 	            res.add(n.getBas_gauche());
-	            if(plateau.length==61)
+	            if(plateau.length==61)//mouvement de 3 pions spéciphique à abalone
 	            {
 	            if(n.getBas_gauche().getBas_gauche()!=null && n.getBas_gauche().getBas_gauche().getPion()==null)
 	            	{
@@ -167,7 +167,7 @@ public abstract class Plateau {
 	            	
 	            		if(n.getBas_gauche().getBas_gauche().getBas_gauche()!=null &&n.getBas_gauche().getBas_gauche().getBas_gauche().getPion()==null)
 	            			res.add(n.getBas_gauche().getBas_gauche().getBas_gauche());
-	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
 	            		
 	            	}
 	        }
