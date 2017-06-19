@@ -22,8 +22,9 @@ import controller.ChoixPartieController;
 public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
     private JoueDamesChinoisesController control;
     RoundButton cases[] = new RoundButton[122];
-    JPanel one[] = new JPanel[17];
+    JPanel one[] = new JPanel[18];
     ActionEvent selected;
+    JLabel res[];
     boolean first=true;
     int turn=0, pan=0;
 
@@ -46,7 +47,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
 
         }
 
-        this.setLayout(new GridLayout(18, 3));
+        this.setLayout(new GridLayout(19, 3));
 
         //En-tête :
         JPanel tete = new JPanel();
@@ -130,6 +131,19 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
         one[pan].add(cases[121]);
         one[pan].setBackground(new Color(33,133,86));
         this.add(one[pan]);
+        pan++;
+        System.out.println(pan);
+        one[pan] = new JPanel();
+        res = new JLabel[control.getPartie().getJoueurs().size()];
+        one[pan].setLayout(new BoxLayout(one[pan], BoxLayout.X_AXIS));
+        for (int i = 0; i < control.getPartie().getJoueurs().size(); i++) {
+			res[i]=new JLabel(""+control.getPartie().getJoueurs().get(i).getPseudo()+": "+control.getPartie().getJoueurs().get(i).getScore());
+			res[i].setFont(new Font("Batang", 20, 20));
+			one[pan].add(res[i]);
+			one[pan].add(Box.createGlue()); 
+		}
+        one[pan].setBackground(new Color(33,133,86));
+        this.add(one[pan]);
 
         this.setVisible(true);
     }
@@ -146,7 +160,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
             one[pan].setBackground(new Color(33,133,86));
             one[pan].add(cases[i]);
         }
-        this.add(one[pan]);
+        this.add(one[pan],BorderLayout.CENTER);
         pan++;
     }
 
@@ -166,6 +180,7 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
         	for (int j = 0; j < control.getPartie().getJoueurs().size(); j++) {
 				System.out.println(control.getPartie().getJoueurs().get(j).getScore());
 			}
+        	control.Sauvegarde();
             dispose();
         }
         
@@ -234,6 +249,12 @@ public class JoueDamesChinoisesUI extends JFrame implements ActionListener  {
     	for (int i = 0; i < one.length; i++) {
 			one[i].repaint();
 		}
+    	for (int i = 0; i < res.length; i++) {
+			res[i].setText(""+control.getPartie().getJoueurs().get(i).getPseudo()+": "+control.getPartie().getJoueurs().get(i).getScore());
+		}
+    	int j=turn%control.getPartie().getJoueurs().size();
+    	res[j].setText(""+control.getPartie().getJoueurs().get(j).getPseudo()+": "+control.getPartie().getJoueurs().get(j).getScore()+" (TURN)");
+    	
     }
     
     public void jouerClassique(ActionEvent e){
