@@ -16,6 +16,8 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
 	private JoueAbaloneController control;
     RoundButton cases[] = new RoundButton[61];
     RoundButton selected = new RoundButton(new Case(0));
+    RoundButton selected2 = new RoundButton(new Case(0));
+    RoundButton selected3 = new RoundButton(new Case(0));
 
     public JoueAbaloneUI(JoueAbaloneController c){
         super("Abalone");
@@ -128,15 +130,15 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
         }
         this.add(one);
     }
-
+   
     /**
      * Actions quand on clique sur une case
      */
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    }
-     /*   if(e.getSource().getClass().equals(JButton.class)){
+   
+        if(e.getSource().getClass().equals(JButton.class)){
             dispose();
         }
         else{
@@ -153,12 +155,12 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
                 selected.setBackground(Color.white);
             }
 
-
+           
             //si il selectione un boutton color�
             if(((RoundButton)e.getSource()).getBackground()==Color.PINK){
-                if(control.getPartie().getPlateau().estVoisin(((RoundButton)e.getSource()).getCases(),selected.getCases())){
-                    control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
-                }
+               
+                	control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
+            }
                 else {
                     //control.sautePion(selected.getCases(), ((RoundButton)e.getSource()).getCases());
                 }
@@ -172,7 +174,7 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
                 }
 
 
-            }
+           
 
             //collore mouvements possibles
             if (((RoundButton)e.getSource()).getCases().getPion()!=null){
@@ -191,4 +193,5 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
             }
         }
     }*/
-}
+        }
+}}
