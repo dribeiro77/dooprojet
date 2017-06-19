@@ -16,6 +16,8 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
 	private JoueAbaloneController control;
     RoundButton cases[] = new RoundButton[61];
     RoundButton selected = new RoundButton(new Case(0));
+    RoundButton selected2 = new RoundButton(new Case(0));
+    RoundButton selected3 = new RoundButton(new Case(0));
 
     public JoueAbaloneUI(JoueAbaloneController c){
         super("Abalone");
@@ -128,25 +130,7 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
         }
         this.add(one);
     }
-
-    public void colloreMouvementsPossibles(ActionEvent e){
-   	 //collore mouvements possibles
-       if (((RoundButton)e.getSource()).getCases().getPion()!=null){
-           ArrayList<Case> res = control.mouvements_possibles(((RoundButton)e.getSource()).getCases());
-           for (int i = 0; i < res.size(); i++) {
-               cases[res.get(i).getId()].setBackground(Color.PINK);
-           }
-       }
-   }
    
-   public void decolloreMouvementsPossibles(ActionEvent e){
-   	if (((RoundButton)e.getSource()).getCases().getPion()!=null){
-           ArrayList<Case> res = control.mouvements_possibles(((RoundButton)e.getSource()).getCases());
-           for (int i = 0; i < res.size(); i++) {
-               cases[res.get(i).getId()].setBackground(Color.white);
-           }
-       }
-   }
     /**
      * Actions quand on clique sur une case
      */
@@ -171,12 +155,12 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
                 selected.setBackground(Color.white);
             }
 
-
+           
             //si il selectione un boutton color�
             if(((RoundButton)e.getSource()).getBackground()==Color.PINK){
-                if(control.getPartie().getPlateau().estVoisin(((RoundButton)e.getSource()).getCases(),selected.getCases())){
-                    control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
-                }
+               
+                	control.deplacementSimple(selected.getCases(), ((RoundButton)e.getSource()).getCases());
+            }
                 else {
                     //control.sautePion(selected.getCases(), ((RoundButton)e.getSource()).getCases());
                 }
@@ -190,7 +174,7 @@ public class JoueAbaloneUI extends JFrame implements ActionListener  {
                 }
 
 
-            }
+           
 
             //collore mouvements possibles
             if (((RoundButton)e.getSource()).getCases().getPion()!=null){

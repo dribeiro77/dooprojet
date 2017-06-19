@@ -64,42 +64,114 @@ public abstract class Plateau {
 		if (n.getDroite() != null){
 	        if (n.getDroite().getPion() == null){
 	            res.add(n.getDroite());
+	            if(plateau.length==61)
+	            {
+	            if(n.getDroite().getDroite()!=null && n.getDroite().getDroite().getPion()==null)
+	            	{
+	            	res.add(n.getDroite().getDroite());
+	            	
+	            		if(n.getDroite().getDroite().getDroite()!=null &&n.getDroite().getDroite().getDroite().getPion()==null)
+	            			res.add(n.getDroite().getDroite().getDroite());
+	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
+	            	}
 	        }
 	    }
+		}
 
 	    //mouvements � gauche
 	    if (n.getGauche() != null){
 	        if (n.getGauche().getPion() == null){
 	            res.add(n.getGauche());
+	            if(plateau.length==61)
+	            {
+	            if(n.getGauche().getGauche()!=null && n.getGauche().getGauche().getPion()==null)
+	            	{
+	            	res.add(n.getGauche().getGauche());
+	            	
+	            		if(n.getGauche().getGauche().getGauche()!=null &&n.getGauche().getGauche().getGauche().getPion()==null)
+	            			res.add(n.getGauche().getGauche().getGauche());
+	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
+	            	}
 	        }
+	    }
 	    }
 
 	    //mouvements haut droite
 	    if (n.getHaut_droite() != null){
-	        if (n.getHaut_droite().getPion() == null){
+	    	if (n.getHaut_droite().getPion() == null){
 	            res.add(n.getHaut_droite());
+	            if(plateau.length==61)
+	            {
+	            if(n.getHaut_droite().getHaut_droite()!=null && n.getHaut_droite().getHaut_droite().getPion()==null)
+	            	{
+	            	res.add(n.getHaut_droite().getHaut_droite());
+	            	
+	            		if(n.getHaut_droite().getHaut_droite().getHaut_droite()!=null &&n.getHaut_droite().getHaut_droite().getHaut_droite().getPion()==null)
+	            			res.add(n.getHaut_droite().getHaut_droite().getHaut_droite());
+	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
+	            	}
 	        }
+	    }
 	    }
 
 	    //mouvements haut gauche
 	    if (n.getHaut_gauche() != null){
-	        if (n.getHaut_gauche().getPion() == null){
+	    	if (n.getHaut_gauche().getPion() == null){
 	            res.add(n.getHaut_gauche());
+	            if(plateau.length==61)
+	            {
+	            if(n.getHaut_gauche().getHaut_gauche()!=null && n.getHaut_gauche().getHaut_gauche().getPion()==null)
+	            	{
+	            	res.add(n.getHaut_gauche().getHaut_gauche());
+	            	
+	            		if(n.getHaut_gauche().getHaut_gauche().getHaut_gauche()!=null &&n.getHaut_gauche().getHaut_gauche().getHaut_gauche().getPion()==null)
+	            			res.add(n.getHaut_gauche().getHaut_gauche().getHaut_gauche());
+	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
+	            	}
 	        }
+	    }
 	    }
 
 	    //mouvements bas droite
 	    if (n.getBas_droite() != null){
-	        if (n.getBas_droite().getPion() == null){
+	    	if (n.getBas_droite().getPion() == null){
 	            res.add(n.getBas_droite());
+	            if(plateau.length==61)
+	            {
+	            if(n.getBas_droite().getBas_droite()!=null && n.getBas_droite().getBas_droite().getPion()==null)
+	            	{
+	            	res.add(n.getBas_droite().getBas_droite());
+	            	
+	            		if(n.getBas_droite().getBas_droite().getBas_droite()!=null &&n.getBas_droite().getBas_droite().getBas_droite().getPion()==null)
+	            			res.add(n.getBas_droite().getBas_droite().getBas_droite());
+	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
+	            	}
 	        }
+	    }
 	    }
 
 	    //mouvements bas gauche
 	    if (n.getBas_gauche() != null){
-	        if (n.getBas_gauche().getPion() == null){
+	    	if (n.getBas_gauche().getPion() == null){
 	            res.add(n.getBas_gauche());
+	            if(plateau.length==61)
+	            {
+	            if(n.getBas_gauche().getBas_gauche()!=null && n.getBas_gauche().getBas_gauche().getPion()==null)
+	            	{
+	            	res.add(n.getBas_gauche().getBas_gauche());
+	            	
+	            		if(n.getBas_gauche().getBas_gauche().getBas_gauche()!=null &&n.getBas_gauche().getBas_gauche().getBas_gauche().getPion()==null)
+	            			res.add(n.getBas_gauche().getBas_gauche().getBas_gauche());
+	            		System.out.println("zzzzzzzzzzzzzzzzzzzzzzz");
+	            		
+	            	}
 	        }
+	    }
 	    }
 
 	    
